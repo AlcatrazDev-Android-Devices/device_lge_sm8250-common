@@ -147,6 +147,7 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/tap2wake"
 
 # Recovery
+BOOTLOADER_MESSAGE_OFFSET := 128
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_USES_RECOVERY_AS_BOOT := true
