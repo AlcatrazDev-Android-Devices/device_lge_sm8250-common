@@ -238,6 +238,9 @@ persist.vendor.sensors.enable.mag_filter=false
 ro.soc.manufacturer=QTI
 ro.soc.model=SM8250
 
+# Verity
+ro.apk_verity.mode=2
+
 # Voice
 vendor.voice.path.for.pcm.voip=true
 
