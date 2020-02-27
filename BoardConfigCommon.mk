@@ -90,6 +90,10 @@ BOARD_HAVE_QCOM_FM := true
 DEVICE_MATRIX_FILE += $(COMMON_PATH)/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_lge_msmnile
+TARGET_RECOVERY_DEVICE_MODULES := libinit_lge_msmnile
+
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 kpti=off androidboot.init_fatal_reboot_target=recovery androidboot.selinux=permissive
