@@ -33,6 +33,9 @@ genfscon sysfs /devices/platform/lge-unified-nodes/thermald_idc                 
 genfscon sysfs /devices/platform/lge-unified-nodes/thermald_ibat                     u:object_r:sysfs_thermal:s0
 genfscon sysfs /devices/virtual/power/fbcn                                           u:object_r:sysfs_thermal:s0
 
+# UFS
+genfscon sysfs /devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/queue/discard_max_bytes                      u:object_r:vendor_sysfs_mmc_host:s0
+
 # Veneer
 genfscon sysfs /devices/platform/vendor/vendor:lge-veneer-psy/power_supply/veneer    u:object_r:sysfs_veneer:s0
 
