@@ -150,6 +150,7 @@ PRODUCT_PACKAGES += \
     vendor.lge.hardware.audio.dac.control@1.0-service
 
 # Dexpreopt
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed
 USE_DEX2OAT_DEBUG := false
 WITH_DEXPREOPT_DEBUG_INFO := false
