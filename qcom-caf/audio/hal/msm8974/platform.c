@@ -650,6 +650,7 @@ static const char * device_table[SND_DEVICE_MAX] = {
     /* ESS Audio Devices */
     [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = "headphones-hifi-dac",
     [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED] = "headphones-hifi-dac-advanced",
+    [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX] = "headphones-hifi-dac-aux",
 #endif
 
     /* Capture sound devices */
@@ -883,6 +884,7 @@ static int acdb_device_table[SND_DEVICE_MAX] = {
      /* ESS ACDB IDS */
     [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = 10,
     [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED] = 10,
+    [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX] = 10,
 #endif
     [SND_DEVICE_OUT_VOICE_LINE] = 10,
     [SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_HEADPHONES] = 10,
@@ -1127,6 +1129,7 @@ static struct name_to_index snd_device_name_index[SND_DEVICE_MAX] = {
     /* ESS */
     {TO_NAME_INDEX(SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC)},
     {TO_NAME_INDEX(SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED)},
+    {TO_NAME_INDEX(SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX)},
 #endif
     {TO_NAME_INDEX(SND_DEVICE_OUT_LINE)},
     {TO_NAME_INDEX(SND_DEVICE_OUT_SPEAKER_AND_HAPTICS)},
@@ -2056,6 +2059,9 @@ void platform_set_echo_reference(struct audio_device *adev, bool enable,
         else if (adev->snd_dev_ref_cnt[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED] > 0)
             strlcat(ec_ref_mixer_path, " headphones-hifi-dac-advanced",
                     MIXER_PATH_MAX_LENGTH);
+        else if (adev->snd_dev_ref_cnt[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX] > 0)
+            strlcat(ec_ref_mixer_path, " headphones-hifi-dac-aux",
+                    MIXER_PATH_MAX_LENGTH);
 #endif
         else if (adev->snd_dev_ref_cnt[SND_DEVICE_OUT_SPEAKER_VBAT] > 0)
             strlcat(ec_ref_mixer_path, " speaker-vbat",
@@ -2375,6 +2381,7 @@ static void set_platform_defaults(struct platform_data * my_data)
     /* ESS */
     backend_tag_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = strdup("headphones-hifi-dac");
     backend_tag_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED] = strdup("headphones-hifi-dac-advanced");
+    backend_tag_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX] = strdup("headphones-hifi-dac-aux");
 #endif
     backend_tag_table[SND_DEVICE_OUT_VOICE_SPEAKER_VBAT] = strdup("voice-speaker-vbat");
     backend_tag_table[SND_DEVICE_OUT_VOICE_SPEAKER_2_VBAT] = strdup("voice-speaker-2-vbat");
@@ -2638,6 +2645,7 @@ static void set_platform_defaults(struct platform_data * my_data)
     /* ESS interface table defaults */
     hw_interface_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = strdup("TERT_MI2S_RX");
     hw_interface_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED] = strdup("TERT_MI2S_RX");
+    hw_interface_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX] = strdup("TERT_MI2S_RX");
 #endif
     my_data->max_mic_count = PLATFORM_DEFAULT_MIC_COUNT;
 
@@ -5359,6 +5367,9 @@ int platform_get_backend_index(snd_device_t snd_device)
                 else if (strncmp(backend_tag_table[snd_device], "headphones-hifi-dac-advanced",
                             sizeof("headphones-hifi-dac-advanced")) == 0)
                         port = HEADPHONE_BACKEND;
+                else if (strncmp(backend_tag_table[snd_device], "headphones-hifi-dac-aux",
+                            sizeof("headphones-hifi-dac-aux")) == 0)
+                        port = HEADPHONE_BACKEND;
 #endif
                 else if (strcmp(backend_tag_table[snd_device], "hdmi") == 0)
                         port = HDMI_RX_BACKEND;
@@ -6742,6 +6753,8 @@ snd_device_t platform_get_output_snd_device(void *platform, struct stream_out *o
         } else if(((property_get_bool("persist.vendor.audio.hifi.enabled", false) == true)) && (ESS_HIFI_SUPPORT == true)){
         	if(property_get_bool("persist.vendor.audio.hifi.advanced", false) == true){
         	    snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED;
+            } else if(property_get_bool("persist.audio.hifi.aux", false) == true) {
+        	    snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX;
         	} else {
         	    snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC;
         	}
@@ -10302,10 +10315,12 @@ static bool platform_check_codec_backend_cfg(struct audio_device* adev,
     if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC) {
            audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac");
            ALOGI("%s: Applying ess hifi route... \n", __func__);
-    } 
-    else if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED) {
+    } else if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED) {
            audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac-advanced");
            ALOGI("%s: Applying advanced ess hifi route\n", __func__);
+    } else if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX) {
+           audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac-aux");
+           ALOGI("%s: Applying aux ess hifi route\n", __func__);
     }
 #endif
 
