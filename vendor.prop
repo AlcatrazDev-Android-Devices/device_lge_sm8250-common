@@ -95,7 +95,6 @@ persist.vendor.ctm.disallowed=1
 persist.vendor.tb.disallowed=1
 persist.vendor.cp.calib_level=128
 persist.vendor.cp.fcc_main_ua=800000
-ro.charger.enable_suspend=true
 
 # Crypto
 ro.crypto.set_dun=true
