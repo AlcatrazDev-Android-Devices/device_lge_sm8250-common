@@ -189,6 +189,9 @@ TARGET_COPY_OUT_ODM := vendor/odm
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_VENDOR := vendor
 
+# Partitions - reserved size
+-include vendor/lineage/config/BoardConfigReservedSize.mk
+
 # Platform
 BOARD_VENDOR := lge
 BOARD_USES_QCOM_HARDWARE := true
