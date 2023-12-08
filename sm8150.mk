@@ -120,6 +120,50 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
+# Rootdir
+PRODUCT_PACKAGES += \
+    fstab.qcom
+
+PRODUCT_PACKAGES += \
+    init.class_main.sh \
+    init.lge.usb.default.sh \
+    init.lge.usb.lao.sh \
+    init.lge.usb.sh \
+    init.lge.zramswap.sh \
+    init.mdm.sh \
+    init.qcom.devstart.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sensors.sh \
+    init.qcom.sh \
+    init.qcom.usb.sh \
+    init.qti.chg_policy.sh \
+    init.qti.dcvs.sh \
+    init.qti.fm.sh
+
+PRODUCT_PACKAGES += \
+    init.lge.display.rc \
+    init.lge.fingerprints.rc \
+    init.lge.power.rc \
+    init.lge.sensors.rc \
+    init.lge.svelte.rc \
+    init.lge.usb.configfs.rc \
+    init.lge.usb.rc \
+    init.lge.vendor.on_boot.rc \
+    init.lge.vendor.on_post_fs_data.rc \
+    init.lge.vendor.on_post_fs.rc \
+    init.lge.vendor.wmc.drv.rc \
+    init.msmnile.rc \
+    init.qcom.factory.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.qti.fm.rc \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    init.time_daemon.rc \
+    init.vendor.sensors.rc \
+    ueventd.qcom.rc
+
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \

@@ -1,0 +1,16 @@
+#
+# Copyright (c) 2019 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+
+on post-fs-data && property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+    start time_daemon
+
+service time_daemon /vendor/bin/time_daemon
+    #LGE - forbid to killed by trigger_reset_main, start from vold.decrypt=trigger_load_persist_props
+    #class main
+    disabled
+    user system
+    group system
+    capabilities SYS_TIME
