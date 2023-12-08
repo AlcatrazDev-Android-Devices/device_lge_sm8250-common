@@ -79,5 +79,11 @@ BOARD_VNDK_VERSION := current
 # Vendor SPL
 VENDOR_SECURITY_PATCH := 2022-09-01
 
+# Verified Boot
+BOARD_AVB_ENABLE := true
+BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
+
 # Inherit the proprietary files
 include vendor/lge/sm8150-common/BoardConfigVendor.mk
