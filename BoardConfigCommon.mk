@@ -76,5 +76,8 @@ include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
 # Treble
 BOARD_VNDK_VERSION := current
 
+# Vendor SPL
+VENDOR_SECURITY_PATCH := 2022-09-01
+
 # Inherit the proprietary files
 include vendor/lge/sm8150-common/BoardConfigVendor.mk
