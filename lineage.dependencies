@@ -1,0 +1,6 @@
+[
+  {
+    "repository": "android_kernel_lge_sm8150",
+    "target_path": "kernel/lge/sm8150"
+  }
+]
