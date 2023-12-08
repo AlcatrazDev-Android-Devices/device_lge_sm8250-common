@@ -73,5 +73,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # SEPolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
 
+# Treble
+BOARD_VNDK_VERSION := current
+
 # Inherit the proprietary files
 include vendor/lge/sm8150-common/BoardConfigVendor.mk
