@@ -70,5 +70,8 @@ TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# SEPolicy
+include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
+
 # Inherit the proprietary files
 include vendor/lge/sm8150-common/BoardConfigVendor.mk
