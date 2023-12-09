@@ -36,4 +36,21 @@ $(OP_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) $(BT_FIRMWARE_MOUNT_POINT) $(DSP_MOUNT_POINT) $(OP_MOUNT_POINT)
 
+CPP_LIBS := libc++_shared.so
+CPP32_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib/,$(notdir $(CPP_LIBS)))
+$(CPP32_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "C++ shared lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /vendor/lib/libc++_shared_snpe.so $@
+
+CPP64_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/lib64/,$(notdir $(CPP_LIBS)))
+$(CPP64_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "C++ shared lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /vendor/lib64/libc++_shared_snpe.so $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(CPP32_SYMLINKS) $(CPP64_SYMLINKS)
+
 endif
