@@ -375,6 +375,11 @@ PRODUCT_PACKAGES += \
     init.vendor.sensors.rc \
     ueventd.qcom.rc
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@2.0-service.multihal \
+    libsensorndkbridge
+
 # Wifi
 PRODUCT_PACKAGES += \
     WifiOverlay
