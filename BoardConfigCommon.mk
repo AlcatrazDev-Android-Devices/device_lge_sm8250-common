@@ -123,6 +123,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
+TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # SEPolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
