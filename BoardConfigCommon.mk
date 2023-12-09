@@ -6,6 +6,9 @@
 
 COMMON_PATH := device/lge/sm8150-common
 
+# Broken
+BUILD_BROKEN_DUP_RULES := true
+
 # A/B
 AB_OTA_UPDATER := true
 
