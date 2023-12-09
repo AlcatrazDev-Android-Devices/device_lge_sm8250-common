@@ -6,6 +6,17 @@
 
 COMMON_PATH := device/lge/sm8150-common
 
+# A/B
+AB_OTA_UPDATER := true
+
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    product \
+    system \
+    vbmeta \
+    vendor
+
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
