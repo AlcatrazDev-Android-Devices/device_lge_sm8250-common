@@ -408,6 +408,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.3-service.lge
+
 # Wifi
 PRODUCT_PACKAGES += \
     WifiOverlay
