@@ -58,6 +58,14 @@ if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
 
+function blob_fixup() {
+    case "${1}" in
+        vendor/etc/init/vendor.sensors.sscrpcd.rc)
+            sed -i 's|class early_hal|class core|g' "${2}"
+            ;;
+    esac
+}
+
 if [ -z "${ONLY_TARGET}" ]; then
     # Initialize the helper for common device
     setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true "${CLEAN_VENDOR}"
