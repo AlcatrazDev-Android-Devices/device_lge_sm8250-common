@@ -25,7 +25,7 @@ source "${HELPER}"
 setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true
 
 # Warning headers and guards
-write_headers "alphaplus betalm"
+write_headers "alphaplus betalm mh2lm flashlm flashlmdd"
 
 # The standard common blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
