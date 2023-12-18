@@ -8,11 +8,10 @@ on boot
     # LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com
     write /proc/sys/net/core/netdev_max_backlog 5000
 
-#/* 2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP [START] */
+    # LGP_DATA_APN_BACKUP, juhyup.kim@lge.com
     mkdir /mnt/vendor/persist-lg/lgdata 0775 radio radio
-#/* 2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP [END] */
 
-# START touch_driver
+	# Touch driver
 	chown system system /sys/devices/virtual/input/lge_touch/incoming_call
 	chmod 664 /sys/devices/virtual/input/lge_touch/incoming_call
 	chown system system /sys/devices/virtual/input/lge_touch/ime_status
@@ -65,9 +64,8 @@ on boot
 	chmod 664 /sys/devices/virtual/input/lge_touch/reg_ctrl
 	chown system system /sys/devices/virtual/input/lge_touch/touch_common_control
 	chmod 664 /sys/devices/virtual/input/lge_touch/touch_common_control
-# END touch_driver
 
-# START sub touch_driver
+	# Sub Touch driver
 	chown system system /sys/devices/virtual/input/lge_sub_touch/incoming_call
 	chmod 664 /sys/devices/virtual/input/lge_sub_touch/incoming_call
 	chown system system /sys/devices/virtual/input/lge_sub_touch/ime_status
@@ -86,9 +84,8 @@ on boot
 	chmod 664 /sys/devices/virtual/input/lge_sub_touch/film_status
 	chown system system /sys/devices/virtual/input/lge_sub_touch/touch_dex_mode_pad
 	chmod 664 /sys/devices/virtual/input/lge_sub_touch/touch_dex_mode_pad
-# END sub touch_driver
 
-# START touch_knock_on
+	# Touch Knock On
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
 	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
@@ -119,30 +116,26 @@ on boot
 	chmod 664 /sys/devices/virtual/input/lge_touch/flexible_display_info
 	chown system system /sys/devices/virtual/input/lge_touch/flexible_display_info_update_frequency
 	chmod 664 /sys/devices/virtual/input/lge_touch/flexible_display_info_update_frequency
-# END touch_knock_on
 
-# Start secure_touch
+	# Secure Touch
 	chown system system /sys/devices/virtual/input/lge_touch/secure_touch
 	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch
 	chown system system /sys/devices/virtual/input/lge_touch/secure_touch_enable
 	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch_enable
 	chown system system /sys/devices/virtual/input/lge_touch/secure_touch_devinfo
 	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch_devinfo
-# End secure_touch
 
-# Start sub_touch
+	# Sub Touch
 	chown system system /sys/devices/virtual/input/lge_sub_touch/lpwg_data
 	chmod 664 /sys/devices/virtual/input/lge_sub_touch/lpwg_data
 	chown system system /sys/devices/virtual/input/lge_sub_touch/lpwg_notify
 	chmod 664 /sys/devices/virtual/input/lge_sub_touch/lpwg_notify
-# End sub_touch
 
-# START tap2wake
+    # Tap 2 Wake
     chown system system /sys/devices/virtual/input/lge_touch/tap2wake
     chmod 664 /sys/devices/virtual/input/lge_touch/tap2wake
-# END tap2wake
 
-# CoverDisplay
+	# CoverDisplay
 	chown system system /sys/devices/platform/soc/a80000.spi/spi_master/spi1/spi1.2/fw
 	chmod 664 /sys/devices/platform/soc/a80000.spi/spi_master/spi1/spi1.2/fw
 	chown system system /sys/devices/platform/soc/soc:gpio_keys/virtual_mcu_firmware_write
@@ -151,9 +144,8 @@ on boot
 	chmod 664 /sys/devices/virtual/ice40_i2c/coverdisplay/FILE_ICE40_POLL
 	chown system system /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
 	chmod 664 /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
-# CoverDisplay
 
-# START LED_driver
+	# LED driver
 	chown system system /sys/class/cover_led/rgb_led/led_pattern
 	chmod 664 /sys/class/cover_led/rgb_led/led_pattern
 	chown system system /sys/class/cover_led/rgb_led/led_blink
@@ -168,4 +160,3 @@ on boot
 	chmod 664 /sys/class/leds/CG/brightness
 	chown system system /sys/class/leds/CB/brightness
 	chmod 664 /sys/class/leds/CB/brightness
-# END LED_driver

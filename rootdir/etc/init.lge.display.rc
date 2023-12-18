@@ -28,7 +28,7 @@
 
 on boot
 
-# Begin Display General Features
+	# General Features
 	chown system system /sys/class/panel/panel-0/drs/freeze_state_hal
 	chmod 664 /sys/class/panel/panel-0/drs/freeze_state_hal
 
@@ -43,9 +43,8 @@ on boot
 
 	chown system system /sys/class/panel/freeze_state_hal
 	chmod 664 /sys/class/panel/freeze_state_hal
-# End Display General Features
 
-# Begin Display Brigntness Features
+	# Brigntness Features
 	chown system system /sys/class/backlight/panel0-backlight/brightness
 	chmod 664 /sys/class/backlight/panel0-backlight/brightness
 	chown system system /sys/class/backlight/panel0-backlight/max_brightness
@@ -118,9 +117,8 @@ on boot
 	chmod 444 /sys/class/panel/brightness/is_fp_hbm_mode
 	chown system system /sys/class/panel/brightness/tc_perf
 	chmod 664 /sys/class/panel/brightness/tc_perf
-# End Display Brigntness Features
 
-# Begin Display Aod Features
+	# AoD Features
 	chown system system /sys/class/panel/panel-0/aod/area
 	chmod 664 /sys/class/panel/panel-0/aod/area
 	chown system system /sys/class/panel/panel-0/aod/power_mode
@@ -135,9 +133,8 @@ on boot
 	chmod 664 /sys/class/panel/aod/area
 	chown system system /sys/class/panel/aod/power_mode
 	chmod 664 /sys/class/panel/aod/power_mode
-# End Display Aod Features
 
-# Begin Img Tune Features
+	# Img Tune Features
 	chown system system /sys/class/panel/panel-0/img_tune/rgb_tune
 	chmod 664 /sys/class/panel/panel-0/img_tune/rgb_tune
 	chown system system /sys/class/panel/panel-0/img_tune/screen_tune
@@ -252,9 +249,8 @@ on boot
 	chmod 664 /sys/class/panel/img_tune/daylight_mode
 	chown system system /sys/class/panel/img_tune/fps_status
 	chmod 444 /sys/class/panel/img_tune/fps_status
-# End Img Tune Features
 
-# Begin Accessory Features
+	# Accessory Features
 	chown system system /sys/class/smartcover/smartcover/state
 	chmod 664 /sys/class/smartcover/smartcover/state
 	chown system system /sys/class/switch/smartcover/state
@@ -283,14 +279,12 @@ on boot
 	chmod 664 /sys/class/extcon/extcon5/state
 	chown system system /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
 	chmod 664 /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
-# End Accessory Features
 
-# Begin Cover Features
+	# Cover Features
 	chown system system /sys/devices/platform/soc/ae90000.qcom,dp_display/extcon/extcon5/state
 	chmod 664 /sys/devices/platform/soc/ae90000.qcom,dp_display/extcon/extcon5/state
-# End Cover Features
 
-# Begin Display Factory Features
+	# Display Factory Features
 	chown system system /sys/class/panel/panel-0/factory/mfts_auto_touch_test_mode
 	chmod 664 /sys/class/panel/panel-0/factory/mfts_auto_touch_test_mode
 
@@ -299,4 +293,3 @@ on boot
 
 	chown system system /sys/class/panel/factory/mfts_auto_touch_test_mode
 	chmod 664 /sys/class/panel/factory/mfts_auto_touch_test_mode
-# End Display Factory Features

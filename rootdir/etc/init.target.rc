@@ -28,7 +28,7 @@
 #
 
 on early-init
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_wglink audio_q6_pdr audio_q6_notifier audio_apr audio_adsp_loader audio_q6 audio_native audio_usf audio_pinctrl_wcd audio_swr audio_platform audio_hdmi audio_wcd_spi audio_stub audio_wcd_core audio_wsa881x audio_wcd9360 audio_hdmi audio_machine_msmnile
+    # exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_wglink audio_q6_pdr audio_q6_notifier audio_apr audio_adsp_loader audio_q6 audio_native audio_usf audio_pinctrl_wcd audio_swr audio_platform audio_hdmi audio_wcd_spi audio_stub audio_wcd_core audio_wsa881x audio_wcd9360 audio_hdmi audio_machine_msmnile
     write /proc/sys/kernel/sched_boost 1
     symlink /data/tombstones /tombstones
 
@@ -47,7 +47,7 @@ on init
 on early-fs
     start vold
 
-on fs
+#on fs
 #    start hwservicemanager
 #    mount_all /vendor/etc/fstab.qcom --early
 #    chown root system /mnt/vendor/persist
@@ -98,11 +98,11 @@ on boot
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
 
-#Load WLAN driver
+    # Load WLAN driver
     insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
-# Add a cpuset for the camera daemon
-# We want all cores for camera
+    # Add a cpuset for the camera daemon
+    # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
     write /dev/cpuset/camera-daemon/cpus 0-7
     write /dev/cpuset/camera-daemon/mems 0
@@ -110,7 +110,7 @@ on boot
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
-#USB controller configuration
+    # USB controller configuration
     setprop vendor.usb.rndis.func.name "gsi"
     setprop vendor.usb.rmnet.func.name "gsi"
     setprop vendor.usb.rmnet.inst.name "rmnet"
@@ -181,11 +181,11 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
    socket thermal-send-rule stream 0660 system system
    group root
 
-service vendor.lowi /vendor/bin/sscrpcd
-   class core
-   user system
-   group system wakelock
-   disabled
+#service vendor.lowi /vendor/bin/sscrpcd
+#   class core
+#   user system
+#   group system wakelock
+#   disabled
 
 service vendor.mdm_helper /vendor/bin/mdm_helper
     class core
@@ -207,11 +207,11 @@ service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
 #    group system wifi inet sdcard_rw media_rw diag
 #    oneshot
 
-service vendor.energy-awareness /vendor/bin/energy-awareness
-    class main
-    user system
-    group system
-    oneshot
+#service vendor.energy-awareness /vendor/bin/energy-awareness
+#    class main
+#    user system
+#    group system
+#    oneshot
 
 service dcvs-sh /vendor/bin/init.qti.dcvs.sh
     class late_start

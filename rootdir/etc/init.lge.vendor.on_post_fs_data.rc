@@ -1,34 +1,34 @@
 on post-fs-data
-    #2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP
+    # 2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP
     mkdir /mnt/vendor/persist-lg/lgdata 0771 radio radio
 
-    #Widevine
+    # Widevine
     mkdir /mnt/vendor/persist-lg/widevine 0770 drm system
 
-    #Widevine firmware
+    # Widevine firmware
     mkdir /mnt/vendor/persist-lg/firmware 0771 system system
 
-    #chargerlogo
+    # chargerlogo
     mkdir /mnt/vendor/persist-lg/chargerlogo 0771 system system
 
-    #Thermal Encryption
+    # Thermal Encryption
     mkdir /mnt/vendor/persist-lg/thermal 0770 root system
 
-    #RCT
+    # RCT
     rm /mnt/vendor/persist-lg/rct
     rm /mnt/vendor/persist-lg/rct.cfg
     mkdir /mnt/vendor/persist-lg/rct 0771 root root
 
-    #Kill-Switch
-#    mkdir /vendor/persist-lg/mms 0770 system vendor_lgmms
+    # Kill-Switch
+    #mkdir /vendor/persist-lg/mms 0770 system vendor_lgmms
 
-    #MM Proxy
+    # MM Proxy
     mkdir /vendor/persist-lg/mmoprt 0771 system system
 
-    #Encryption
+    # Encryption
     mkdir /vendor/persist-lg/encryption 0771 system system
 
-    #secureks
+    # Secureks
     mkdir /vendor/persist-lg/secureks 0770 system system
 
     # STB
@@ -36,10 +36,10 @@ on post-fs-data
     chmod 770 /vendor/persist-lg/stblvd/dkp
     chmod 770 /vendor/persist-lg/stblvd/srmp
 
-    #KDDI SIMLock Management
+    # KDDI SIMLock Management
     mkdir /vendor/persist-lg/cardinal 0770 system system
 
-    #CAPP_BLUEERROR_HANDLER: temp version, it will be removed
+    # CAPP_BLUEERROR_HANDLER: temp version, it will be removed
     chown root system /data/dontpanic
     chmod 0775 /data/dontpanic
 
@@ -48,20 +48,18 @@ on post-fs-data
     chown system system /sys/class/graphics/fb0/sp_link_backlight_off
     chmod 0660 /sys/devices/virtual/input/lge_touch/sp_link_touch_off
     chown system system /sys/devices/virtual/input/lge_touch/sp_link_touch_off
-    # LGE_CHANGE_E, [display] feature : SP MIRRORING
 
-    #NTCODE_LISTING
+    # NTCODE_LISTING
     mkdir /data/app-system 0771 system system
 
-    #LGP_DATA_APN_BACKUP
+    # LGP_DATA_APN_BACKUP
     mkdir /mnt/vendor/persist-lg/lgdata 0775 radio radio
 
     # LGBackup Removing Unlabeled Resource
     rm /data/data/.bnr_fifo_rly
     rm /data/data/.bnr_fifo_req
 
-
-    #labeling lg partitions
+    # labeling lg partitions
     restorecon /mnt/vendor/persist-lg
     restorecon_recursive /mnt/vendor/persist-lg
     restorecon /mnt/vendor/sns
@@ -92,26 +90,26 @@ on post-fs-data
     restorecon /sys/kernel/debug/tzdbg
     restorecon_recursive /sys/kernel/debug/tzdbg
 
-    #Widevine firmware copy
+    # Widevine firmware copy
     # reducing booting time. changing to background start
     exec_background - system system -- /vendor/bin/cpfirmware widevine /mnt/vendor/persist-lg/firmware
 
-    #Create callduration file
+    # Create callduration file
     mkdir /mnt/vendor/persist-lg/callduration 0770 system radio
     chown system /mnt/vendor/persist-lg/callduration
     chmod 0770 /mnt/vendor/persist-lg/callduration
 
-    #Create rtnlastdate file
+    # Create rtnlastdate file
     mkdir /vendor/persist-lg/rtnlastdate 0770 system radio
 
-    #Create camera dir for EEPROM data
+    # Create camera dir for EEPROM data
     mkdir mnt/vendor/persist-lg/camera 0771 cameraserver radio
 
-    #Create Touch self test folder
+    # Create Touch self test folder
     mkdir /data/vendor/touch 0771 system system
 
-    #Create factory for key attestation provisoning
+    # Create factory for key attestation provisoning
     mkdir /data/vendor/km 0770 system system
 
-    #Create ots data file
+    # Create ots data file
     mkdir /data/vendor/ots 0775 system system
