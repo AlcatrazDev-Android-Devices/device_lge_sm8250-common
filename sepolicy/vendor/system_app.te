@@ -1,0 +1,1 @@
+allow system_app sysfs_zram:dir r_file_perms;

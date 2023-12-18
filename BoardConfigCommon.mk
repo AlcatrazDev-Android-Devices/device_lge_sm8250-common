@@ -155,6 +155,9 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # SEPolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
+include hardware/lge/sepolicy/SEPolicy.mk
+
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 # Treble
 BOARD_VNDK_VERSION := current

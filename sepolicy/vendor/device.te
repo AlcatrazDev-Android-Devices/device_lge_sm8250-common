@@ -1,0 +1,8 @@
+type fingerprint_device, dev_type;
+
+type encrypt_block_device, dev_type;
+type persdata_abt_block_device, dev_type;
+type power_block_device, dev_type;
+type sec_block_device, dev_type;
+type sns_block_device, dev_type;
+type drm_block_device, dev_type;
