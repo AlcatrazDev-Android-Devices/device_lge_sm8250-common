@@ -394,7 +394,6 @@ PRODUCT_PACKAGES += \
     init.lge.usb.default.sh \
     init.lge.usb.lao.sh \
     init.lge.usb.sh \
-    init.lge.zramswap.sh \
     init.mdm.sh \
     init.qcom.devstart.sh \
     init.qcom.early_boot.sh \
@@ -411,7 +410,6 @@ PRODUCT_PACKAGES += \
     init.lge.fingerprints.rc \
     init.lge.power.rc \
     init.lge.sensors.rc \
-    init.lge.svelte.rc \
     init.lge.usb.configfs.rc \
     init.lge.usb.rc \
     init.lge.vendor.on_boot.rc \

@@ -3,9 +3,6 @@
 # LGE logger service rc
 import /init.lge.log.rc
 
-# import zram configurations
-import /init.lge.svelte.rc
-
 on init
 
 # LG override start -device/qcom/msmnile/init.target.rc
