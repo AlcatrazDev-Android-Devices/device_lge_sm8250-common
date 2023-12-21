@@ -423,6 +423,7 @@ PRODUCT_PACKAGES += \
     init.lge.vendor.on_post_fs.rc \
     init.lge.vendor.wmc.drv.rc \
     init.msmnile.rc \
+    init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.qti.fm.rc \

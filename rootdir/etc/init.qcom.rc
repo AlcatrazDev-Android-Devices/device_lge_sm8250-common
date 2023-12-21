@@ -27,6 +27,7 @@
 
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.msmnile.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.lge.usb.rc
 import /vendor/etc/init/hw/init.lge.usb.configfs.rc
