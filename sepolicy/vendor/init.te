@@ -13,3 +13,6 @@ allow init { abt_pers_data_file
 allow init firmware_file:filesystem getattr;
 
 allow init encrypt_block_device:blk_file write;
+
+allow init per_boot_file:file ioctl;
+allowxperm init per_boot_file:file ioctl { F2FS_IOC_SET_PIN_FILE };
