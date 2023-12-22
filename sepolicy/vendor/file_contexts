@@ -47,6 +47,7 @@
 /mnt/vendor/persist-lg/data(/.*)?                       u:object_r:qseesfs_data_file:s0
 /mnt/vendor/persist-lg/firmware(/.*)?                   u:object_r:firmware_data_file:s0
 /mnt/vendor/persist-lg/goodix(/.*)?                     u:object_r:persist_lg_fingerprint_file:s0
+/mnt/vendor/persist-lg/tof(./*)?                        u:object_r:persist_lg_camera_file:s0
 /mnt/vendor/persist-lg/widevine(/.*)?                   u:object_r:widevine_data_file:s0
 /mnt/vendor/persist-lg/wifi(/.*)?                       u:object_r:persist_lg_wlan_file:s0
 /mnt/vendor/persist-lg/wifi/qcom(/.*)?                  u:object_r:persist_lg_wlan_file:s0
