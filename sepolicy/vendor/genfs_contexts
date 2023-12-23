@@ -50,6 +50,12 @@ genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-3/3-0020/wakeup             
 genfscon sysfs /devices/platform/vendor/vendor:lge_usb_ds2/wakeup                                                                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/vendor/vendor:lge-veneer-psy/wakeup                                                                u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/vendor/vendor:lge-veneer-psy/power_supply/veneer/wakeup10                                          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:fingerprint@0/wakeup                                                                       u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:fingerprint@0/wakeup/wakeup7                                                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:fingerprint@0/wakeup/wakeup7/event_count                                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-4/4-0020/wakeup                                                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-4/4-0020/wakeup/wakeup8                                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-4/4-0020/wakeup/wakeup8/event_count                                             u:object_r:sysfs_wakeup:s0
 
 # zRAM
 genfscon proc /sys/vm/swappiness         u:object_r:proc_swappiness:s0
