@@ -12,6 +12,9 @@ r_dir_file(hal_camera_default, input_device);
 allow hal_camera_default input_device:chr_file rw_file_perms;
 allow hal_camera_default vendor_xdsp_device:chr_file ioctl;
 
+allow hal_camera_default persist_lg_data_file:dir rw_dir_perms;
+allow hal_camera_default persist_lg_data_file:file { getattr setattr rw_file_perms };
+
 # Properties
 get_prop(hal_camera_default, vendor_camera_prop)
 get_prop(hal_camera_default, vendor_lge_misc_prop)
