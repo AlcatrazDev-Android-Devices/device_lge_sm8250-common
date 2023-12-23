@@ -187,6 +187,12 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.lge_sm8150
 endif
 
+# FM packages
+PRODUCT_PACKAGES += \
+	FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
+
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
