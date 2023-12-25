@@ -1,5 +1,9 @@
 [
   {
+    "repository": "android_hardware_lge",
+    "target_path": "hardware/lge"
+  },
+  {
     "repository": "android_kernel_lge_sm8150",
     "target_path": "kernel/lge/sm8150"
   }
