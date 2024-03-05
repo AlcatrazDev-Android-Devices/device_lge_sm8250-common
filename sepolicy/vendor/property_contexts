@@ -37,9 +37,7 @@ vendor.hw.fm.version                                u:object_r:vendor_fm_prop:s0
 # LGE Misc
 ro.vendor.lge.build.target_country                  u:object_r:vendor_lge_misc_prop:s0
 ro.vendor.lge.build.target_operator                 u:object_r:vendor_lge_misc_prop:s0
-ro.vendor.lge.capp_cupss.op.dir                     u:object_r:vendor_lge_misc_prop:s0
-ro.vendor.lge.capp_cupss.persist_lg.dir             u:object_r:vendor_lge_misc_prop:s0
-ro.vendor.lge.capp_cupss.rootdir                    u:object_r:vendor_lge_misc_prop:s0
+ro.vendor.lge.capp_cupss.                           u:object_r:vendor_lge_misc_prop:s0
 ro.vendor.lge.swversion                             u:object_r:vendor_lge_misc_prop:s0
 
 # LiveDisplay
