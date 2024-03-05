@@ -55,8 +55,8 @@
 /mnt/vendor/absolute(/.*)?                              u:object_r:abt_pers_data_file:s0
 
 # OP files
-/product/OP(/.*)?                                       u:object_r:op_file:s0
-/product/OP/audio(/.*)?                                 u:object_r:op_audio_file:s0
+/vendor/OP(/.*)?                                       u:object_r:op_file:s0
+/vendor/OP/audio(/.*)?                                 u:object_r:op_audio_file:s0
 
 # Persist files
 /mnt/vendor/persist(/.*)?                               u:object_r:vendor_persist_file:s0
