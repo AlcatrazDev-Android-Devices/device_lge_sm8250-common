@@ -1,6 +1,6 @@
 # OP
-type op_file, file_type;
-type op_audio_file, file_type;
+type op_file, file_type, vendor_file_type;
+type op_audio_file, file_type, vendor_file_type;
 
 # LG
 type abt_pers_data_file, file_type;
