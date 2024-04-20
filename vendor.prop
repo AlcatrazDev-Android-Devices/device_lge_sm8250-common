@@ -69,6 +69,7 @@ vendor.lge.audio.hifi_rec.normal_lmt=0
 vendor.lge.audio.hifi_rec.offset_gain=39
 vendor.lge.fm_gain_control_headset=1.0
 vendor.lge.fm_gain_control_speaker=2.5
+ro.hardware.audio_amplifier=hifi_dac
 
 # Bluetooth
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
