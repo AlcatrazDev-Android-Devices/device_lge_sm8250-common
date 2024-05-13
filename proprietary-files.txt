@@ -375,6 +375,16 @@ vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.1.so
 
+# Fingerprint
+vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.2-service
+vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.2-service.rc
+vendor/etc/vintf/manifest/vendor.lge.hardware.biometrics.fingerprint@2.2-service.xml
+vendor/lib64/hw/fingerprint.msmnile.so
+vendor/lib64/libRbsFlow.so
+vendor/lib64/libets_teeclient_v2.so
+vendor/lib64/libfpsph.so
+vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
+
 # FM
 system_ext/lib/fm_helium.so
 system_ext/lib/libfm-hci.so

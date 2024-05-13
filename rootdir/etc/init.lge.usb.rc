@@ -324,8 +324,8 @@ on property:sys.usb.config=diag,serial_smd,serial_tty,rmnet_ipa,mass_storage,dpl
 # LAO
 ################################################################################
 
-# on property:persist.vendor.lge.usb.diag_enable=*
-#     exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.diag.sh ${persist.vendor.lge.usb.diag_enable}
+on property:persist.vendor.lge.usb.diag_enable=*
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.diag.sh ${persist.vendor.lge.usb.diag_enable}
 
 # adb
 on property:sys.usb.config=adb && property:sys.usb.configfs=0

@@ -53,7 +53,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- AV Configs -->
         <property name="vendor.audio.use.sw.alac.decoder" value="true"/>
         <property name="vendor.audio.use.sw.ape.decoder" value="true"/>
-        <property name="vendor.audio.use.sw.mpegh.decoder" value="false"/>
+        <property name="vendor.audio.use.sw.mpegh.decoder" value="true"/>
         <property name="vendor.audio.flac.sw.decoder.24bit" value="true"/>
         <property name="vendor.audio.hw.aac.encoder" value="true"/>
         <flag name="aac_adts_offload_enabled" value="true" />
@@ -69,8 +69,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- AHAL Configs -->
         <flag name="a2dp_offload_enabled" value="true" />
         <flag name="anc_headset_enabled" value="true" />
-        <flag name="audio_zoom_enabled" value="false" />
         <flag name="audiosphere_enabled" value="true" />
+        <flag name="audio_zoom_enabled" value="false" />
         <flag name="battery_listener_enabled" value="true" />
         <flag name="compress_capture_enabled" value="false" />
         <flag name="compress_in_enabled" value="true" />

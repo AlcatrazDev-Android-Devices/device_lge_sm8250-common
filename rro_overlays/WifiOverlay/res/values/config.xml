@@ -32,7 +32,7 @@
 
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
-    <string name="config_wifi_tcp_buffers" translatable="false">524288,1048576,5505024,262144,524288,5505024</string>
+    <string name="config_wifi_tcp_buffers" translatable="false">524288,1048576,8808040,262144,524288,6710886</string>
 
     <!-- Channel list for softap 2G band. Empty means all channels -->
     <string translateble="false" name="config_wifiSoftap2gChannelList"></string>
@@ -74,4 +74,54 @@
 
     <!-- Boolean indicating that wifi only link configuratios that have exact same credentials (i.e PSK) -->
     <bool translatable="false" name="config_wifi_only_link_same_credential_configurations">false</bool>
+
+    <!-- Enable concurrent restricted connectivity + internet connectivity
+         Note: this is conditional on the device supporting dual concurrent STAs. -->
+    <bool name="config_wifiMultiStaRestrictedConcurrencyEnabled">false</bool>
+
+    <!-- Wifi driver supports IEEE80211AX single user beamformee for softap -->
+    <bool name="config_wifiSoftapHeSuBeamformeeSupported">true</bool>
+
+    <!-- Wifi driver supports IEEE80211AX single user beamformer for softap -->
+    <bool name="config_wifiSoftapHeSuBeamformerSupported">true</bool>
+
+    <!-- Wifi driver supports IEEE80211AX for softap -->
+    <bool name="config_wifiSoftapIeee80211axSupported">true</bool>
+
+    <!-- Boolean to provide support to keep wifi5 symbol for 8SS supported device and 11ax AP -->
+    <bool name="config_vendorWifi11axReadySupport">true</bool>
+
+    <!-- Wifi driver supports WPA3 Simultaneous Authentication of Equals (WPA3-OWE) for softap -->
+    <bool name="config_vendor_wifi_softap_owe_supported">true</bool>
+
+    <!-- Wifi driver supports 6GHz band for softap -->
+    <bool name="config_wifiSoftap6ghzSupported">true</bool>
+
+    <!-- Integer indicating additional disconnect delay (in ms) after IMS onLost() indication is received -->
+    <integer name="config_wifiDelayDisconnectOnImsLostMs">1000</integer>
+
+    <!-- List of allowed channels in 6GHz band for softap. If the device doesn't want to restrict
+         channels this should be empty. Values is a comma separated channel string and/or channel
+         range string like '36-48,149'. -->
+    <string name="config_wifiSoftap6gChannelList" />
+
+    <!-- Enable Aware NDP interface selection on interface that already has network set up.
+     Note: the default AOSP Android does not support multiple networks on the same Aware NDI.
+     Enabling this configuration will restore legacy behavior but may result in incorrect behavior.
+     -->
+    <bool translatable="false" name="config_wifiAllowMultipleNetworksOnSameAwareNdi">true</bool>
+
+    <!-- Indicates that bridged AP mode is supported on this device -->
+    <bool name="config_wifiBridgedSoftApSupported">false</bool>
+
+    <!-- Array describing scanning schedule in seconds when device is disconnected and screen is on -->
+    <integer-array name="config_wifiDisconnectedScanIntervalScheduleSec">
+        <item>20</item>
+    </integer-array>
+
+    <!-- Indicates that 11ax mode is supported on this device
+         Note that if this flag is set to true, then 11ax is assumed to be supported.
+         However, if it is left to the default value of false, the 11ax support will
+         be checked via NL80211 interface -->
+    <bool translatable="false" name="config_wifi11axSupportOverride">true</bool>
 </resources>

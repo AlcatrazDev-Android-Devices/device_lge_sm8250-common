@@ -8,9 +8,7 @@ on post-fs-data && property:ro.crypto.state=encrypted && property:ro.crypto.type
     start time_daemon
 
 service time_daemon /vendor/bin/time_daemon
-    #LGE - forbid to killed by trigger_reset_main, start from vold.decrypt=trigger_load_persist_props
-    #class main
-    disabled
+    class main
     user system
     group system
     capabilities SYS_TIME

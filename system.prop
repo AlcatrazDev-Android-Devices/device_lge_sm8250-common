@@ -74,7 +74,7 @@ ro.nfc.port=I2C
 ro.vendor.qti.sys.fw.bg_apps_limit=64
 
 # Processor Model
-ro.processor.model=SM8150
+ro.processor.model=SM8250
 
 # QC framework value-adds
 ro.vendor.qti.va_aosp.support=1
@@ -83,7 +83,7 @@ ro.vendor.qti.va_aosp.support=1
 DEVICE_PROVISIONED=1
 persist.vendor.data.mode=concurrent
 ril.subscription.types=NV,RUIM
-ro.telephony.default_network=26
+ro.telephony.default_network=33
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true

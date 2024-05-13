@@ -93,14 +93,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration_lge.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_lge.xml \
     $(LOCAL_PATH)/audio/audio_policy_volumes_lge.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_lge.xml \
     $(LOCAL_PATH)/audio/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
-    $(LOCAL_PATH)/audio/audio_tuning_mixer_tavil.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer_tavil.txt \
     $(LOCAL_PATH)/audio/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
-    $(LOCAL_PATH)/audio/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/audio/mixer_paths_pahu.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_pahu.xml \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
-    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9340.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9340.xml \
-    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9340_qrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9340_qrd.xml \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
@@ -155,14 +151,14 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    gralloc.msmnile \
-    hwcomposer.msmnile \
+    gralloc.kona \
+    hwcomposer.kona \
     libdisplayconfig.qti \
     libqdMetaData \
     libqdMetaData.system \
     libtinyxml \
     libvulkan \
-    memtrack.msmnile \
+    memtrack.kona \
     vendor.display.config@1.16 \
     vendor.display.config@2.0 \
     vendor.qti.hardware.display.allocator-service \
@@ -180,15 +176,13 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
     android.hardware.drm@1.4-service.clearkey
 
-# fastbootd
+# Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
 
 # Fingerprint
-ifneq ($(filter alphaplus betalm flashlm flashlmdd,$(shell echo $(TARGET_PRODUCT) | sed 's/^lineage_//')),)
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.lge_sm8150
-endif
+    android.hardware.biometrics.fingerprint@2.3-service.lge_sm8250
 
 # FM packages
 PRODUCT_PACKAGES += \
@@ -316,6 +310,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
+# Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -432,7 +429,7 @@ PRODUCT_PACKAGES += \
     init.lge.vendor.on_post_fs_data.rc \
     init.lge.vendor.on_post_fs.rc \
     init.lge.vendor.wmc.drv.rc \
-    init.msmnile.rc \
+    init.kona.rc \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
@@ -448,7 +445,11 @@ PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0 \
     android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors@2.0-service.multihal \
-    libsensorndkbridge
+    libsensorndkbridge \
+    sensors.lge
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -476,7 +477,7 @@ PRODUCT_PACKAGES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.lge_sm8150
+    vendor.lineage.touch@1.0-service.lge_sm8250
 
 # Trust
 PRODUCT_PACKAGES += \
@@ -532,4 +533,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/lge/sm8150-common/sm8150-common-vendor.mk)
+$(call inherit-product, vendor/lge/sm8250-common/sm8250-common-vendor.mk)
