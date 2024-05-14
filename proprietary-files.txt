@@ -69,6 +69,7 @@ vendor/lib/libexthwplugin.so
 vendor/lib/libqtigef.so
 vendor/lib/libsndmonitor.so
 vendor/lib/libspkrprot.so
+vendor/lib/libssrec.so
 vendor/lib/libsurround_3mic_proc.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
@@ -105,6 +106,7 @@ vendor/lib64/libexthwplugin.so
 vendor/lib64/libqtigef.so
 vendor/lib64/libsndmonitor.so
 vendor/lib64/libspkrprot.so
+vendor/lib64/libssrec.so
 
 # Audio
 vendor/lib/hw/audio.primary.kona.so
@@ -311,6 +313,7 @@ vendor/lib64/libhdr_tm.so
 
 # Display (SDM)
 vendor/lib/libdisplayqos.so
+vendor/lib/libdisplayskuutils.so
 vendor/lib/libqseed3.so
 vendor/lib/libsdedrm.so
 vendor/lib/libsdm-color.so
@@ -320,6 +323,7 @@ vendor/lib/libsdm-disp-vndapis.so
 vendor/lib/libsdmextension.so
 vendor/lib/libtinyxml2_1.so
 vendor/lib64/libdisplayqos.so
+vendor/lib64/libdisplayskuutils.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdedrm.so
 vendor/lib64/libsdm-color.so
@@ -349,6 +353,19 @@ vendor/lib64/vendor.display.color@1.3.so
 vendor/lib64/vendor.display.color@1.4.so
 vendor/lib64/vendor.display.color@1.5.so
 vendor/lib64/vendor.display.postproc@1.0.so
+vendor/lib64/vendor.display.config@1.0.so
+vendor/lib64/vendor.display.config@1.10.so
+vendor/lib64/vendor.display.config@1.11.so
+vendor/lib64/vendor.display.config@1.1.so
+vendor/lib64/vendor.display.config@1.2.so
+vendor/lib64/vendor.display.config@1.3.so
+vendor/lib64/vendor.display.config@1.4.so
+vendor/lib64/vendor.display.config@1.5.so
+vendor/lib64/vendor.display.config@1.6.so
+vendor/lib64/vendor.display.config@1.7.so
+vendor/lib64/vendor.display.config@1.8.so
+vendor/lib64/vendor.display.config@1.9.so
+vendor/lib64/vendor.display.config@2.0.so
 
 # DPM
 framework/tcmclient.jar
@@ -515,6 +532,11 @@ vendor/lib64/libllvm-qcom.so
 # Graphics firmware
 vendor/firmware/a650_gmu.bin
 vendor/firmware/a650_sqe.fw
+vendor/firmware/a650_zap.b00
+vendor/firmware/a650_zap.b01
+vendor/firmware/a650_zap.b02
+vendor/firmware/a650_zap.elf
+vendor/firmware/a650_zap.mdt
 
 # Graphics (Vulkan)
 vendor/lib/hw/vulkan.adreno.so
@@ -630,12 +652,29 @@ vendor/lib64/libopenvx.so
 system_ext/lib/libmmosal.so
 system_ext/lib/libmmparser_lite.so
 system_ext/lib64/libmmosal.so
-vendor/bin/hw/vendor.qti.media.c2@1.0-service
-vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
 vendor/etc/seccomp_policy/mediacodec.policy
 vendor/etc/system_properties.xml
 vendor/lib/libmmosal.so
 vendor/lib64/libmmosal.so
+
+# Media - Codec2
+vendor/bin/hw/vendor.qti.media.c2@1.0-service
+vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
+vendor/etc/seccomp_policy/codec2.vendor.base-arm.policy
+vendor/etc/seccomp_policy/codec2.vendor.ext-arm.policy
+vendor/etc/seccomp_policy/mediacodec.policy
+vendor/lib/libqcodec2_base.so
+vendor/lib/libqcodec2_basecodec.so
+vendor/lib/libqcodec2_core.so
+vendor/lib/libqcodec2_platform.so
+vendor/lib/libqcodec2_utils.so
+vendor/lib/libqcodec2_v4l2codec.so
+vendor/lib64/libqcodec2_base.so
+vendor/lib64/libqcodec2_basecodec.so
+vendor/lib64/libqcodec2_core.so
+vendor/lib64/libqcodec2_platform.so
+vendor/lib64/libqcodec2_utils.so
+vendor/lib64/libqcodec2_v4l2codec.so
 
 # MSM IRQ
 vendor/bin/msm_irqbalance
@@ -737,46 +776,56 @@ vendor/lib64/vendor.qti.hardware.factory@1.0.so
 vendor/lib64/vendor.qti.hardware.factory@1.1.so
 
 # QMI
-etc/permissions/privapp-permissions-qti.xml
-etc/sysconfig/qti_whitelist.xml
 system_ext/etc/permissions/qti_libpermissions.xml
 system_ext/etc/permissions/qti_permissions.xml
 vendor/bin/irsc_util
-vendor/etc/seccomp_policy/qti-systemd.policy
+vendor/bin/pd-mapper
+vendor/bin/qmipriod
+vendor/bin/shsusrd
+vendor/etc/init/qmipriod.debug.rc
+vendor/etc/init/qmipriod.rc
+vendor/etc/init/shsusrd.rc
 vendor/etc/sec_config
+vendor/etc/seccomp_policy/qti-systemd.policy
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
-vendor/lib/libqcbor.so
+vendor/lib/libminkdescriptor.so
+vendor/lib/libminksocket.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib/libqmi.so
+vendor/lib/libqmiservices.so
 vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_helper.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
+vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmi_legacy.so
-vendor/lib/libqmiservices.so
 vendor/lib64/libdiag.so
 vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libdsutils.so
 vendor/lib64/libidl.so
+vendor/lib64/libminkdescriptor.so
+vendor/lib64/libminksocket.so
 vendor/lib64/libqcci_legacy.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
 vendor/lib64/libqmi.so
+vendor/lib64/libqmiextservices.so
+vendor/lib64/libqmiservices.so
 vendor/lib64/libqmi_cci.so
 vendor/lib64/libqmi_client_helper.so
 vendor/lib64/libqmi_client_qmux.so
 vendor/lib64/libqmi_common_so.so
 vendor/lib64/libqmi_csi.so
+vendor/lib64/libqmi_csvt_srvc.so
 vendor/lib64/libqmi_encdec.so
 vendor/lib64/libqmi_legacy.so
-vendor/lib64/libqmiservices.so
 
 # Qualcomm Trusted Execution Environment
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service

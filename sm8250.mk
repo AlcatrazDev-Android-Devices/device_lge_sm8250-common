@@ -171,6 +171,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator@3.0.vendor \
     vendor.qti.hardware.display.allocator@4.0.vendor \
     vendor.qti.hardware.display.composer-service \
+    vendor.qti.hardware.display.config-V5-ndk \
     vendor.qti.hardware.display.mapper@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
@@ -180,7 +181,7 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
-    android.hardware.drm@1.4-service.clearkey
+    android.hardware.drm-service.clearkey
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -248,6 +249,10 @@ PRODUCT_COPY_FILES += \
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor
+
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.lge
 
 # Livedisplay
 PRODUCT_PACKAGES += \

@@ -127,6 +127,12 @@ TARGET_KERNEL_SOURCE := kernel/lge/sm8250
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --kernel_offset $(BOARD_KERNEL_OFFSET) --dtb_offset $(BOARD_DTB_OFFSET) --header_version $(BOARD_BOOT_HEADER_VERSION)
 
+TARGET_FORCE_PREBUILT_KERNEL := true
+BOARD_PREBUILT_DTBOIMAGE := $(COMMON_PATH)/prebuilt/dtbo.img
+BOARD_PREBUILT_DTBIMAGE_DIR := $(COMMON_PATH)/dtb
+TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/kernel
+PRODUCT_COPY_FILES += $(COMMON_PATH)/prebuilt/dtb:dtb.img
+
 # Media
 TARGET_PROVIDES_LIBPLATFORMCONFIG := true
 TARGET_DISABLED_UBWC := true
@@ -182,8 +188,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # SEPolicy
-include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
-include hardware/lge/sepolicy/SEPolicy.mk
+include device/qcom/sepolicy_vndr/SEPolicy.mk
 
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
@@ -202,6 +207,11 @@ BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    $(COMMON_PATH)/framework_compatibility_matrix.xml \
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
+    vendor/lineage/config/device_framework_matrix.xml
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn

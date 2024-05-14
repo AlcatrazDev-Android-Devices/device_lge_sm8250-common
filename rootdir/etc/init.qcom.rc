@@ -30,6 +30,17 @@ import /vendor/etc/init/hw/init.qti.ufs.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
+# to override init.qcom.rc and init.target.rc
+import /vendor/etc/init/hw/init.lge.usb.rc
+import /vendor/etc/init/hw/init.lge.usb.configfs.rc
+import /vendor/etc/init/hw/init.lge.power.rc
+import /vendor/etc/init/hw/init.lge.sensors.rc
+import /vendor/etc/init/hw/init.lge.audio.rc
+import /vendor/etc/init/hw/init.lge.display.rc
+import /vendor/etc/init/hw/init.lge.fingerprints.rc
+
+# import chipset common rc file
+import /vendor/etc/init/hw/init.kona.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
