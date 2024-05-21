@@ -63,6 +63,9 @@ function blob_fixup() {
         vendor/etc/init/vendor.sensors.sscrpcd.rc)
             sed -i 's|class early_hal|class core|g' "${2}"
             ;;
+        vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so)
+            "${SIGSCAN}" -p "9A 0A 00 94" -P "E0 03 00 AA" -f "${2}"
+            ;;
     esac
 }
 
