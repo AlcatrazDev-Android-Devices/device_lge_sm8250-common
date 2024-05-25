@@ -4,7 +4,7 @@
     "target_path": "hardware/lge"
   },
   {
-    "repository": "android_kernel_lge_sm8150",
-    "target_path": "kernel/lge/sm8150"
+    "repository": "android_kernel_lge_sm8250",
+    "target_path": "kernel/lge/sm8250"
   }
 ]

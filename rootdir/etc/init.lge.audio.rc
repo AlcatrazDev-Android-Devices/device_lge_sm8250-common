@@ -1,5 +1,4 @@
-#!/vendor/bin/sh
-# Copyright (c) 2020 The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2012, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,8 +25,11 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-#
-# Function to start sensors for SSC enabled platforms
-#
-cp /vendor/etc/sensors/scripts/* /data/vendor/sensors/scripts/
-chmod a+rw /data/vendor/sensors/scripts/*
+##
+# ** Uncomment and match subsys# if ADSP SSR is not used **
+##
+#on property:init.svc.vendor.ssr_setup=stopped
+#	write /sys/bus/msm_subsys/devices/subsys1/restart_level system
+
+on early-init
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_tfa9878

@@ -70,11 +70,11 @@ persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
 persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=false
 persist.vendor.qcom.bluetooth.enable.splita2dp=true
 persist.vendor.qcom.bluetooth.scram.enabled=true
-persist.vendor.qcom.bluetooth.soc=cherokee
+persist.vendor.qcom.bluetooth.soc=hastings
 persist.vendor.qcom.bluetooth.twsp_state.enabled=false
 ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.bluetooth.wipower=false
-vendor.qcom.bluetooth.soc=cherokee
+vendor.qcom.bluetooth.soc=hastings
 
 # Camera
 ro.vendor.lge.dev.fmode=0
@@ -174,7 +174,7 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 mm.enable.smoothstreaming=true
 
 # Netflix
-ro.netflix.bsp_rev=Q855-16947-1
+ro.netflix.bsp_rev=Q8250-19134-1
 
 # Netmgr
 persist.vendor.data.iwlan.enable=true
@@ -216,7 +216,7 @@ persist.sys.binary_xml=false
 
 # SoC
 ro.soc.manufacturer=Qualcomm
-ro.soc.model=SM8150
+ro.soc.model=SM8250
 
 # Voice
 vendor.voice.path.for.pcm.voip=true
