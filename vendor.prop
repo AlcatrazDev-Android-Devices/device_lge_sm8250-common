@@ -48,6 +48,7 @@ vendor.audio_hal.period_size=480
 # Audio - DAC
 persist.vendor.lge.audio.handset_rx_type=DEFAULT
 persist.vendor.lge.audio.hifi_adv_support=1
+persist.vendor.lge.audio.hifi_dac.avc_volume=0
 persist.vendor.lge.audio.nsenabled=ON
 ro.vendor.lge.config.hifi_enhance_support=1
 ro.vendor.lge.feature.use_audio_headset_type_ext=true
