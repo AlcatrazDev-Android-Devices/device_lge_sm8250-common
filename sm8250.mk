@@ -76,6 +76,7 @@ PRODUCT_PACKAGES += \
     libdownmix \
     libdynproc \
     libeffectproxy \
+    libexthwplugin \
     libhdmiedid \
     libhfp \
     libldnhncr \
@@ -84,6 +85,7 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libreverbwrapper \
     libsndmonitor \
+    libspkrprot \
     libtinycompress \
     libvisualizer \
     libvolumelistener \
@@ -126,6 +128,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
+    vendor.qti.hardware.camera.postproc@1.0.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
     libcamera2ndk_vendor \
     libdng_sdk.vendor \
@@ -155,11 +158,15 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
     libqdMetaData \
     libqdMetaData.system \
+    libsdedrm \
+    libsdmcore \
     libtinyxml \
     libvulkan \
     memtrack.kona \
     vendor.display.config@1.16 \
     vendor.display.config@2.0 \
+    vendor.display.config@1.16.vendor \
+    vendor.display.config@2.0.vendor \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.allocator@1.0.vendor \
     vendor.qti.hardware.display.allocator@3.0.vendor \
@@ -311,7 +318,8 @@ PRODUCT_PACKAGES += \
     libchrome.vendor \
     NfcNci \
     SecureElement \
-    Tag
+    Tag \
+    vendor.nxp.nxpnfc@2.0.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
@@ -440,7 +448,6 @@ PRODUCT_PACKAGES += \
     init.qti.fm.rc \
     init.target.rc \
     init.target.wigig.rc \
-    init.time_daemon.rc \
     init.vendor.sensors.rc \
     ueventd.qcom.rc
 
