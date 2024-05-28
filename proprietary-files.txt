@@ -88,25 +88,12 @@ system_ext/etc/permissions/audiosphere.xml
 system_ext/framework/audiosphere.jar
 vendor/lib/soundfx/libaisound.so
 vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libaudiopreprocessing.so
-vendor/lib/soundfx/libbundlewrapper.so
-vendor/lib/soundfx/libdownmix.so
-vendor/lib/soundfx/libdynproc.so
-vendor/lib/soundfx/libeffectproxy.so
-vendor/lib/soundfx/libldnhncr.so
 vendor/lib/soundfx/liblgeffectwrapper.so
 vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcompostprocbundle.so
-vendor/lib/soundfx/libqcomvisualizer.so
-vendor/lib/soundfx/libqcomvoiceprocessing.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
-vendor/lib/soundfx/libreverbwrapper.so
 vendor/lib/soundfx/libshoebox.so
-vendor/lib/soundfx/libvisualizer.so
-vendor/lib/soundfx/libvolumelistener.so
 vendor/lib/btaudio_offload_if.so
-vendor/lib/liba2dpoffload.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -118,37 +105,18 @@ vendor/lib/libaudio_log_utils.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libaudioconfigstore.so
 vendor/lib/libaudioparsers.so
-vendor/lib/libbatterylistener.so
-vendor/lib/libcirrusspkrprot.so
-vendor/lib/libcomprcapture.so
 vendor/lib/libdrc.so
-vendor/lib/libexthwplugin.so
 vendor/lib/libqtigef.so
-vendor/lib/libsndmonitor.so
-vendor/lib/libspkrprot.so
 vendor/lib/libssrec.so
 vendor/lib/libsurround_3mic_proc.so
 vendor/lib64/soundfx/libaisound.so
 vendor/lib64/soundfx/libasphere.so
-vendor/lib64/soundfx/libaudiopreprocessing.so
-vendor/lib64/soundfx/libbundlewrapper.so
-vendor/lib64/soundfx/libdownmix.so
-vendor/lib64/soundfx/libdynproc.so
-vendor/lib64/soundfx/libeffectproxy.so
-vendor/lib64/soundfx/libldnhncr.so
 vendor/lib64/soundfx/liblgeffectwrapper.so
 vendor/lib64/soundfx/libqcbassboost.so
-vendor/lib64/soundfx/libqcompostprocbundle.so
-vendor/lib64/soundfx/libqcomvisualizer.so
-vendor/lib64/soundfx/libqcomvoiceprocessing.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
-vendor/lib64/soundfx/libreverbwrapper.so
 vendor/lib64/soundfx/libshoebox.so
-vendor/lib64/soundfx/libvisualizer.so
-vendor/lib64/soundfx/libvolumelistener.so
 vendor/lib64/btaudio_offload_if.so
-vendor/lib64/liba2dpoffload.so
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
@@ -159,13 +127,7 @@ vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudioconfigstore.so
 vendor/lib64/libaudioparsers.so
-vendor/lib64/libbatterylistener.so
-vendor/lib64/libcirrusspkrprot.so
-vendor/lib64/libcomprcapture.so
-vendor/lib64/libexthwplugin.so
 vendor/lib64/libqtigef.so
-vendor/lib64/libsndmonitor.so
-vendor/lib64/libspkrprot.so
 vendor/lib64/libssrec.so
 
 # Audio
@@ -353,17 +315,14 @@ system_ext/lib/libsdm-disp-apis.qti.so
 system_ext/lib64/libsdm-disp-apis.qti.so
 vendor/bin/qdcmss
 vendor/etc/init/qdcmss.rc
--vendor/etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml
 vendor/lib/libdpps.so
 vendor/lib/libhdcp1prov.so
 vendor/lib/libhdcp2p2prov.so
 vendor/lib/libhdmipassthru.so
-vendor/lib/libsdmcore.so
 vendor/lib64/libdpps.so
 vendor/lib64/libhdcp1prov.so
 vendor/lib64/libhdcp2p2prov.so
 vendor/lib64/libhdmipassthru.so
-vendor/lib64/libsdmcore.so
 vendor/lib64/unnhal-acc-adreno.so
 vendor/lib64/unnhal-acc-common.so
 vendor/lib64/unnhal-acc-hvx.so
@@ -375,7 +334,6 @@ vendor/lib64/libhdr_tm.so
 vendor/lib/libdisplayqos.so
 vendor/lib/libdisplayskuutils.so
 vendor/lib/libqseed3.so
-vendor/lib/libsdedrm.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-colormgr-algo.so
 vendor/lib/libsdm-diag.so
@@ -385,7 +343,6 @@ vendor/lib/libtinyxml2_1.so
 vendor/lib64/libdisplayqos.so
 vendor/lib64/libdisplayskuutils.so
 vendor/lib64/libqseed3.so
-vendor/lib64/libsdedrm.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-colormgr-algo.so
 vendor/lib64/libsdm-diag.so
@@ -413,19 +370,6 @@ vendor/lib64/vendor.display.color@1.3.so
 vendor/lib64/vendor.display.color@1.4.so
 vendor/lib64/vendor.display.color@1.5.so
 vendor/lib64/vendor.display.postproc@1.0.so
-vendor/lib64/vendor.display.config@1.0.so
-vendor/lib64/vendor.display.config@1.10.so
-vendor/lib64/vendor.display.config@1.11.so
-vendor/lib64/vendor.display.config@1.1.so
-vendor/lib64/vendor.display.config@1.2.so
-vendor/lib64/vendor.display.config@1.3.so
-vendor/lib64/vendor.display.config@1.4.so
-vendor/lib64/vendor.display.config@1.5.so
-vendor/lib64/vendor.display.config@1.6.so
-vendor/lib64/vendor.display.config@1.7.so
-vendor/lib64/vendor.display.config@1.8.so
-vendor/lib64/vendor.display.config@1.9.so
-vendor/lib64/vendor.display.config@2.0.so
 
 # DPM
 framework/tcmclient.jar
@@ -753,7 +697,6 @@ vendor/firmware/libpn557_fw.so:vendor/lib/libpn557_fw.so
 vendor/firmware/libpn557_fw_64.so:vendor/lib64/libpn557_fw_64.so
 vendor/firmware/libpn557_fw.so
 vendor/firmware/libpn557_fw_64.so
-vendor/lib64/vendor.nxp.nxpnfc@2.0.so
 vendor/lib64/vendor.nxp.nxpnfclegacy@1.0.so
 
 # OMX
@@ -781,7 +724,6 @@ vendor/lib/libadpcmdec.so
 vendor/lib/libdsd2pcm.so
 vendor/lib/libmulawdec.so
 vendor/lib/libswvdec.so
-vendor/lib/libvorbisidec.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libFlacSwDec.so
