@@ -50,9 +50,6 @@ on post-fs-data
     chown system system /sys/devices/virtual/input/lge_touch/sp_link_touch_off
     # LGE_CHANGE_E, [display] feature : SP MIRRORING
 
-    #NTCODE_LISTING
-    mkdir /data/app-system 0771 system system
-
     #LGP_DATA_APN_BACKUP
     mkdir /mnt/vendor/persist-lg/lgdata 0775 radio radio
 
