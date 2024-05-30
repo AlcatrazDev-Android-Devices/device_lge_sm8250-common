@@ -1,6 +1,7 @@
 # Audio
 audio.deep_buffer.media=true
 tunnel.audio.encode=true
+use.voice.path.for.pcm.voip=true
 
 # Bluetooth
 persist.vendor.bt.a2dp.aac_whitelist=false
@@ -44,6 +45,7 @@ ro.hwui.text_small_cache_width=1024
 ro.hwui.text_small_cache_height=1024
 ro.hwui.text_large_cache_width=2048
 ro.hwui.text_large_cache_height=1024
+debug.hwui.skia_atrace_enabled=false
 
 # IMS
 persist.dbg.volte_avail_ovr=1
@@ -61,11 +63,10 @@ ro.config.low_ram=false
 ro.lmk.log_stats=true
 
 # Media
-av.offload.enable=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
 #Netflix custom property
-ro.netflix.bsp_rev=Q855-16947-1
+ro.netflix.bsp_rev=Q8250-19134-1
 
 # NFC
 ro.nfc.port=I2C
@@ -83,7 +84,8 @@ ro.vendor.qti.va_aosp.support=1
 DEVICE_PROVISIONED=1
 persist.vendor.data.mode=concurrent
 ril.subscription.types=NV,RUIM
-ro.telephony.default_network=33
+ro.telephony.default_network=33,33
+persist.vendor.radio.atfwd.start=true
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
@@ -91,10 +93,6 @@ persist.vendor.sensors.enable.mag_filter=true
 # SSR
 persist.vendor.ssr.enable_ramdumps=1
 persist.vendor.ssr.restart_level=ALL_ENABLE
-
-# Transcoding related property.
-debug.media.transcoding.codec_max_operating_rate_720P=240
-debug.media.transcoding.codec_max_operating_rate_1080P=120
 
 # Vendor
 ro.vendor.qti.va_aosp.support=1

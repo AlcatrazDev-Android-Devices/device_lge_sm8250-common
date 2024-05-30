@@ -2,7 +2,7 @@ on boot
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
     # LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com
-    write /proc/sys/net/core/rmem_max  8388608
+    write /proc/sys/net/core/rmem_max  16777216
     write /proc/sys/net/core/wmem_max  8388608
 
     # LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com

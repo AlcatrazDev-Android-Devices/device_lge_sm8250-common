@@ -286,6 +286,10 @@
         <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
     </integer-array>
 
+    <!-- Whether or not wcg (wide color gamut) should be enabled on this device,
+          we only enabled it while the device has ability of mixed color spaces composition -->
+    <bool name="config_enableWcgMode">true</bool>
+
     <!-- Whether device has a physical display cutout -->
     <bool name="config_physicalDisplayCutout">true</bool>
 

@@ -1,10 +1,6 @@
 # Audio
 audio.offload.buffer.size.kb=32
 audio.offload.gapless.enabled=true
-persist.audio.fluence.speaker=true
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicecomm=true
-persist.audio.fluence.voicerec=false
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
@@ -24,7 +20,6 @@ bluetooth.profile.pbap.server.enabled=true
 bluetooth.profile.sap.server.enabled=true
 
 # Camera
-persist.camera.gyro.disable=0
 vendor.camera.aux.packagelist=org.lineageos.snap,org.codeaurora.snapcam,com.android.camera,com.android.MGC
 
 # CNE
