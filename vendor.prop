@@ -155,7 +155,6 @@ persist.vendor.lge.gnss.lppe_support=11
 persist.vendor.lge.gnss.week_number=1738
 
 # Graphics
-debug.renderengine.backend=skiaglthreaded
 debug.sf.hw=0
 debug.egl.hw=0
 debug.sf.enable_gl_backpressure=1
