@@ -1,11 +1,25 @@
 allow fsck { persdata_abt_block_device 
              power_block_device 
              sns_block_device
-             drm_block_device }:file rw_file_perms;
+             drm_block_device
+             els_block_device
+             mpt_block_device
+             srtc_block_device
+             operatorlogging_block_device
+             eri_block_device
+             carrier_block_device
+             persist_lg_block_device }:file rw_file_perms;
 
 allow fsck { persdata_abt_block_device 
              power_block_device 
              sns_block_device
-             drm_block_device }:blk_file rw_file_perms;
+             drm_block_device
+             els_block_device
+             mpt_block_device
+             srtc_block_device
+             operatorlogging_block_device
+             eri_block_device
+             carrier_block_device
+             persist_lg_block_device }:blk_file rw_file_perms;
 
 allow fsck self:capability kill;
