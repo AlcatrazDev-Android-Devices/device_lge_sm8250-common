@@ -14,33 +14,36 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.lge_sm8150"
-
-#include <android/log.h>
+#define LOG_TAG "android.hardware.biometrics.fingerprint@2.3-service.lge_sm8250"
+#include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>
 
 #include "BiometricsFingerprint.h"
 
-// libhwbinder:
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
-// Generated HIDL files
-using android::hardware::biometrics::fingerprint::V2_1::IBiometricsFingerprint;
-using android::hardware::biometrics::fingerprint::V2_1::implementation::BiometricsFingerprint;
+using android::hardware::biometrics::fingerprint::V2_3::IBiometricsFingerprint;
+using android::hardware::biometrics::fingerprint::V2_3::implementation::BiometricsFingerprint;
+
+using android::OK;
+using android::status_t;
 
 int main() {
-    android::sp<IBiometricsFingerprint> service = BiometricsFingerprint::getInstance();
-    if (service == nullptr) {
-        ALOGE("Instance of BiometricsFingerprint is null");
+    android::sp<IBiometricsFingerprint> service = new BiometricsFingerprint();
+
+    configureRpcThreadpool(1, true);
+
+    status_t status = service->registerAsService();
+    if (status != OK) {
+        LOG(ERROR) << "Cannot register Biometrics 2.3 HAL service.";
         return 1;
     }
-    configureRpcThreadpool(1, true /*callerWillJoin*/);
-    android::status_t status = service->registerAsService();
-    if (status != android::OK) {
-        ALOGE("Cannot register BiometricsFingerprint service");
-        return 1;
-    }
+
+    LOG(INFO) << "Biometrics 2.3 HAL service ready.";
+
     joinRpcThreadpool();
-    return 0; // should never get here
+
+    LOG(ERROR) << "Biometrics 2.3 HAL service failed to join thread pool.";
+    return 1;
 }
