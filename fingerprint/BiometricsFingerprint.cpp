@@ -32,6 +32,7 @@
 #define NOTIFY_SCAN_STOP FingerCmdLge::SCAN_STOP
 
 #define FOD_HBM_PATH "/sys/devices/virtual/panel/brightness/fp_lhbm"
+#define LGE_TOUCH_RESET_PATH "/sys/devices/virtual/input/lge_touch/reset_ctrl"
 
 namespace android {
 namespace hardware {
@@ -42,6 +43,10 @@ namespace implementation {
 
 void setFodHbm(bool status) {
     android::base::WriteStringToFile(status ? "1" : "0", FOD_HBM_PATH);
+}
+
+void sendResetToLGETouchDriver() {
+    android::base::WriteStringToFile("4", LGE_TOUCH_RESET_PATH);
 }
 
 void BiometricsFingerprint::disableHighBrightFod() {
@@ -143,7 +148,7 @@ Return<void> BiometricsFingerprint::onFingerDown(uint32_t, uint32_t, float, floa
 
 Return<void> BiometricsFingerprint::onFingerUp() {
     BiometricsFingerprint::disableHighBrightFod();
-
+    sendResetToLGETouchDriver();
     return Void();
 }
 
