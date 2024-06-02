@@ -469,7 +469,6 @@ vendor/lib64/vendor.qti.esepowermanager@1.1.so
 # Fingerprint
 vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.2-service
 vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.2-service.rc
-vendor/etc/vintf/manifest/vendor.lge.hardware.biometrics.fingerprint@2.2-service.xml
 vendor/lib64/hw/fingerprint.kona.so
 vendor/lib64/libRbsFlow.so
 vendor/lib64/libets_teeclient_v2.so
