@@ -8,4 +8,10 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <!-- LGE Fingerprint HAL service -->
+    <hal format="hidl">
+        <name>vendor.lge.hardware.biometrics.fingerprint</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.2::ILgeBiometricsFingerprint/default</fqname>
+    </hal>
 </manifest>
