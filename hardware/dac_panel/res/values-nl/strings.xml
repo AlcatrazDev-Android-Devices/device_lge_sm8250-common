@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quad_dac_app_name">Quad DAC paneel</string>
+    <string name="quad_dac">Hi-Fi Quad DAC</string>
+    <string name="quad_dac_on">Quad DAC aan</string>
+    <string name="quad_dac_off">Quad DAC uit</string>
+    <string name="quad_dac_unavail">Quad DAC niet beschikbaar </string>
+    <string name="quad_dac_settings">Quad DAC Instellingen</string>
+    <string name="quad_dac_balance">Balans</string>
+    <string name="quad_dac_balance_summary">Wijzig de balans links/rechts</string>
+    <string name="sound_preset">Geluidsvoorinstelling</string>
+    <string name="sound_preset_normal">Normaal</string>
+    <string name="sound_preset_enhanced">Verbeterd</string>
+    <string name="sound_preset_detailed">Gedetailleerd</string>
+    <string name="sound_preset_live">Live</string>
+    <string name="sound_preset_bass">Bas</string>
+    <string name="digital_filter">Digitaai filter</string>
+    <string name="digital_filter_0">Kort</string>
+    <string name="digital_filter_1">Scherp</string>
+    <string name="digital_filter_2">Langzaam</string>
+    <string name="hifi_mode">HiFi mode</string>
+    <string name="hifi_mode_normal">Normaal</string>
+    <string name="hifi_mode_him">Hoge impedantie </string>
+    <string name="hifi_mode_aux-him">AUX hoge impedantie</string>
+    <string name="avc_volume">AVC volume</string>
+    <string name="avc_volume_summary">Versterkt volume</string>
+</resources>

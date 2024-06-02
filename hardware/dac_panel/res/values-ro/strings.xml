@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quad_dac_app_name">Panou Quad DAC</string>
+    <string name="quad_dac">Hi-Fi Quad DAC</string>
+    <string name="quad_dac_on">Quad DAC pornit</string>
+    <string name="quad_dac_off">Quad DAC oprit</string>
+    <string name="quad_dac_unavail">Quad DAC indisponibil</string>
+    <string name="quad_dac_settings">Setări Quad DAC</string>
+    <string name="quad_dac_balance">Balans</string>
+    <string name="quad_dac_balance_summary">Modifică balansul stânga/dreapta</string>
+    <string name="sound_preset">Presetare sunet</string>
+    <string name="sound_preset_normal">Normal</string>
+    <string name="sound_preset_enhanced">Îmbunătățit</string>
+    <string name="sound_preset_detailed">Detaliat</string>
+    <string name="sound_preset_live">Live</string>
+    <string name="sound_preset_bass">Bass</string>
+    <string name="digital_filter">Filtru digital</string>
+    <string name="digital_filter_0">Scurt</string>
+    <string name="digital_filter_1">Ascuţit</string>
+    <string name="digital_filter_2">Încet</string>
+    <string name="hifi_mode">Mod HiFi</string>
+    <string name="hifi_mode_normal">Normal</string>
+    <string name="hifi_mode_him">Impedanță înaltă</string>
+    <string name="hifi_mode_aux-him">Impedanță înaltă AUX</string>
+    <string name="avc_volume">Volum AVC</string>
+    <string name="avc_volume_summary">Amplifică volumul</string>
+</resources>
