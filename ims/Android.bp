@@ -1,0 +1,31 @@
+java_import {
+	name: "com.android.ims-lge-prebuilt",
+	jars: ["com.android.ims-lge-prebuilt.jar"],
+}
+
+java_import {
+	name: "framework-lge-prebuilt",
+	jars: ["framework-lge-prebuilt.jar"],
+}
+
+java_library {
+    name: "com.android.ims-lge",
+	static_libs: [
+		"com.android.ims-lge-prebuilt",
+	],
+	installable: true,
+    hostdex: true,
+    compile_dex: true,
+	system_ext_specific: true,
+}
+
+java_library {
+    name: "framework-lge",
+	static_libs: [
+		"framework-lge-prebuilt",
+	],
+	installable: true,
+    hostdex: true,
+    compile_dex: true,
+	system_ext_specific: true,
+}

@@ -263,6 +263,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor
 
+# LG Ims
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ims/privapp-permissions-lgims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lgims.xml \
+    $(LOCAL_PATH)/ims/sysconfig-lgims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/sysconfig-lgims.xml
+
+PRODUCT_PACKAGES += \
+    framework-lge \
+    com.android.ims-lge
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light-service.lge

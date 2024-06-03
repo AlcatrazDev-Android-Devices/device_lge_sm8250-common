@@ -952,10 +952,18 @@ vendor/radio/qcril_database/upgrade/8_version_update_ecc_table.sql
 vendor/radio/qcril_database/qcril.db
 
 # RIL - IMS
+system_ext/etc/permissions/com.lge.wfcsupport.xml
+system_ext/etc/permissions/com.lge.ims.httpTxn.xml
+system_ext/framework/com.lge.wfcsupport.jar
+system_ext/framework/com.lge.ims.httpTxn.jar
 system_ext/lib64/libdiag_system.so
 system_ext/lib64/libimscamera_jni.so
 system_ext/lib64/libimsmedia_jni.so
+system_ext/lib64/libimsmmpf.lge.so
+system_ext/lib64/libims.lge.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
+-system_ext/priv-app/Ims6/Ims6.apk
+-system_ext/priv-app/ImsVT/ImsVT.apk
 vendor/bin/ims_rtp_daemon
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
