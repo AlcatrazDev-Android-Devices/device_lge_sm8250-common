@@ -11,7 +11,6 @@ audio.dolby.ds2.enabled=false
 audio.dolby.ds2.hardbypass=false
 audio.offload.video=false
 audio.sys.noisy.broadcast.delay=500
-audio.sys.mute.latency.factor=2
 audio.sys.offload.pstimeout.secs=3
 audio.offload.min.duration.secs=30
 persist.spkr.cal.duration=0
@@ -149,7 +148,6 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 vendor.gatekeeper.disable_spu=true
 
 # GPS
-persist.backup.ntpServer=0.pool.ntp.org
 persist.vendor.lge.gnss.lppe_support=11
 persist.vendor.lge.gnss.week_number=1738
 
@@ -189,7 +187,6 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 media.stagefright.thumbnail.prefer_hw_codecs=false
 vendor.mm.enable.qcom_parser=16777215
-ro.media.recorder-max-base-layer-fps=60
 
 # Netflix
 ro.netflix.bsp_rev=Q8250-19134-1
