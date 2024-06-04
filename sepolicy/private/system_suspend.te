@@ -1,0 +1,2 @@
+r_dir_file(system_suspend, sysfs_charger)
+r_dir_file(system_suspend, sysfs_powersupply_wireless)

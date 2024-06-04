@@ -1,4 +1,5 @@
 # Audio
+audio.sys.mute.latency.factor=2
 audio.offload.buffer.size.kb=32
 audio.offload.gapless.enabled=true
 
@@ -31,8 +32,12 @@ persist.demo.hdmirotationlock=false
 # Fastbootd
 ro.fastbootd.available=true
 
+# GPS
+persist.backup.ntpServer=0.pool.ntp.org
+
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+ro.media.recorder-max-base-layer-fps=60
 
 # Netmgr
 persist.data.df.dev_name=rmnet_usb0
