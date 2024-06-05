@@ -1,0 +1,4 @@
+hidl_package_root {
+    name: "vendor.lge",
+    path: "device/lge/sm8250-common/hardware/interfaces",
+}

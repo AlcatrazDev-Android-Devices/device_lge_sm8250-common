@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quad_dac_app_name">クアッド DAC パネル</string>
+    <string name="quad_dac">Hi-Fi クアッド DAC</string>
+    <string name="quad_dac_on">クアッド DAC オン</string>
+    <string name="quad_dac_off">クアッド DAC オフ</string>
+    <string name="quad_dac_unavail">クアッド DAC 利用不可</string>
+    <string name="quad_dac_settings">クアッド DAC の設定</string>
+    <string name="quad_dac_balance">バランス</string>
+    <string name="quad_dac_balance_summary">左右のバランスを変更します</string>
+    <string name="sound_preset">サウンドプリセット</string>
+    <string name="sound_preset_normal">標準</string>
+    <string name="sound_preset_enhanced">強調</string>
+    <string name="sound_preset_detailed">精細</string>
+    <string name="sound_preset_live">ライブ</string>
+    <string name="sound_preset_bass">バス</string>
+    <string name="digital_filter">デジタルフィルター</string>
+    <string name="digital_filter_0">ショート</string>
+    <string name="digital_filter_1">シャープ</string>
+    <string name="digital_filter_2">スロー</string>
+    <string name="hifi_mode">Hi-Fi モード</string>
+    <string name="hifi_mode_normal">標準</string>
+    <string name="hifi_mode_him">ハイインピーダンス</string>
+    <string name="hifi_mode_aux-him">AUX 高インピーダンス</string>
+    <string name="avc_volume">AVC 音量</string>
+    <string name="avc_volume_summary">音量を増幅します</string>
+</resources>

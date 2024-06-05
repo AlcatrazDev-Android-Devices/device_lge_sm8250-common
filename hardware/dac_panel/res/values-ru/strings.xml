@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quad_dac_app_name">Панель Quad DAC</string>
+    <string name="quad_dac">Hi-Fi Quad DAC</string>
+    <string name="quad_dac_on">Quad DAC включено</string>
+    <string name="quad_dac_off">Quad DAC выключено</string>
+    <string name="quad_dac_unavail">Quad DAC недоступно</string>
+    <string name="quad_dac_settings">Настройки Quad DAC</string>
+    <string name="quad_dac_balance">Баланс</string>
+    <string name="quad_dac_balance_summary">Изменить баланс левый/правый</string>
+    <string name="sound_preset">Предустановка звука</string>
+    <string name="sound_preset_normal">Обычный</string>
+    <string name="sound_preset_enhanced">Расширенный</string>
+    <string name="sound_preset_detailed">Детальный</string>
+    <string name="sound_preset_live">Живой</string>
+    <string name="sound_preset_bass">Bass</string>
+    <string name="digital_filter">Цифровой фильтр</string>
+    <string name="digital_filter_0">Короткий</string>
+    <string name="digital_filter_1">Острый</string>
+    <string name="digital_filter_2">Медленный</string>
+    <string name="hifi_mode">Режим HiFi</string>
+    <string name="hifi_mode_normal">Обычный</string>
+    <string name="hifi_mode_him">Высокий импеданс</string>
+    <string name="hifi_mode_aux-him">AUX Высокий импеданс</string>
+    <string name="avc_volume">Громкость AVC</string>
+    <string name="avc_volume_summary">Усиленная громкость</string>
+</resources>
