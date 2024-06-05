@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quad_dac_app_name">Quad DAC 패널</string>
+    <string name="quad_dac">Hi-Fi Quad DAC</string>
+    <string name="quad_dac_on">Quad DAC 켜짐</string>
+    <string name="quad_dac_off">Quad DAC 꺼짐</string>
+    <string name="quad_dac_unavail">Quad DAC 이용할 수 없음</string>
+    <string name="quad_dac_settings">Quad DAC 설정</string>
+    <string name="quad_dac_balance">소리 조절</string>
+    <string name="quad_dac_balance_summary">좌-우 소리 조절</string>
+    <string name="sound_preset">사운드 프리셋</string>
+    <string name="sound_preset_normal">기본</string>
+    <string name="sound_preset_enhanced">균형감 있게</string>
+    <string name="sound_preset_detailed">선명하게</string>
+    <string name="sound_preset_live">현장감 있게</string>
+    <string name="sound_preset_bass">저음 강화</string>
+    <string name="digital_filter">디지털 필터</string>
+    <string name="digital_filter_0">기본 (Short)</string>
+    <string name="digital_filter_1">자연스럽게 (Sharp)</string>
+    <string name="digital_filter_2">깨끗하게 (Slow)</string>
+    <string name="hifi_mode">HiFi 모드</string>
+    <string name="hifi_mode_normal">기본</string>
+    <string name="hifi_mode_him">높은 임피던스</string>
+    <string name="avc_volume">AVC 볼륨</string>
+    <string name="avc_volume_summary">볼륨 증폭</string>
+</resources>

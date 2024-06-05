@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quad_dac_app_name">Bảng điều khiển Quad DAC</string>
+    <string name="quad_dac">Hi-Fi Quad DAC</string>
+    <string name="quad_dac_on">Bật Quad DAC</string>
+    <string name="quad_dac_off">Tắt Quad DAC</string>
+    <string name="quad_dac_unavail">Quad DAC không khả dụng</string>
+    <string name="quad_dac_settings">Cài đặt Quad DAC</string>
+    <string name="quad_dac_balance">Cân bằng</string>
+    <string name="quad_dac_balance_summary">Thay đổi cân bằng Trái / Phải</string>
+    <string name="sound_preset">Cài đặt âm thanh sẵn có</string>
+    <string name="sound_preset_normal">Bình thường</string>
+    <string name="sound_preset_enhanced">Nâng cao</string>
+    <string name="sound_preset_detailed">Chi tiết</string>
+    <string name="sound_preset_live">Trực tiếp</string>
+    <string name="sound_preset_bass">Âm trầm</string>
+    <string name="digital_filter">Bộ lọc kỹ thuật số</string>
+    <string name="digital_filter_0">Ngắn</string>
+    <string name="digital_filter_1">Sắc nét</string>
+    <string name="digital_filter_2">Chậm</string>
+    <string name="hifi_mode">Chế độ HiFi</string>
+    <string name="hifi_mode_normal">Bình thường</string>
+    <string name="hifi_mode_him">Trở kháng Cao</string>
+    <string name="hifi_mode_aux-him">AUX Trở kháng Cao</string>
+    <string name="avc_volume">Âm lượng AVC</string>
+    <string name="avc_volume_summary">Khuếch đại âm lượng</string>
+</resources>
