@@ -4,3 +4,6 @@ binder_call(rild, hal_lgdata_default);
 
 allow rild hal_lgdata_hwservice:hwservice_manager find;
 r_dir_file(rild, op_file);
+allow rild mnt_vendor_file:dir search;
+allow rild persist_lg_data_file:dir search;
+allow rild persist_lg_data_file:sock_file write;
