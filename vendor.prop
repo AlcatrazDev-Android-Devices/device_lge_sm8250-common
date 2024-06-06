@@ -199,6 +199,10 @@ ro.netflix.bsp_rev=Q8250-19134-1
 persist.vendor.data.mode=concurrent
 ro.vendor.use_data_netmgrd=true
 
+# OP
+ro.vendor.lge.capp_cupss.op.dir=/vendor/OP
+ro.vendor.lge.capp_cupss.rootdir=/vendor/OP
+
 # PASR
 vendor.power.pasr.enabled=true
 
