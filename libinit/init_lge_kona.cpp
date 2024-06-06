@@ -93,6 +93,8 @@ void init_target_properties()
                 dualSim = true;
             } else if(pieces[0].compare("androidboot.vendor.lge.hw.revision") == 0) {
                 property_override("ro.boot.hardware.revision", pieces[1]);
+            } else if(pieces[0].compare("androidboot.vendor.lge.nfc.vendor") == 0) {
+                property_override("vendor.lge.nfc_vendor", pieces[1]);
             }
         }
     }
