@@ -16,7 +16,7 @@
 
 #define BL              "/sys/class/backlight/panel0-backlight/"
 #define BL_EX           "/sys/class/backlight/panel0-backlight-ex/"
-#define LED             "/sys/class/lg_rgb_led/use_patterns/"
+// #define LED             "/sys/class/lg_rgb_led/use_patterns/"
 
 #define BRIGHTNESS      "brightness"
 #define MAX_BRIGHTNESS  "max_brightness"
