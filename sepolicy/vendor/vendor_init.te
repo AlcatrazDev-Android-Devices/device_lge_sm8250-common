@@ -7,6 +7,8 @@ set_prop(vendor_init, vendor_lge_misc_prop)
 set_prop(vendor_init, vendor_lge_usb_prop)
 set_prop(vendor_init, vendor_qni_prop)
 set_prop(vendor_init, vendor_sensors_prop)
+set_prop(vendor_init, vendor_console_log_level_prop)
+set_prop(vendor_init, vendor_mm_parser_prop)
 
 allow vendor_init persdata_abt_block_device:dir relabelto;
 
