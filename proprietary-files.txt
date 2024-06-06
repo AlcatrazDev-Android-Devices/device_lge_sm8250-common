@@ -644,6 +644,13 @@ vendor/firmware/libpn557_fw.so
 vendor/firmware/libpn557_fw_64.so
 vendor/lib64/vendor.nxp.nxpnfclegacy@1.0.so
 
+# NFC - JP variant
+vendor/bin/hw/android.hardware.nfc@1.2-service-cxd22xx
+vendor/etc/init/android.hardware.nfc@1.2-service-cxd22xx.rc
+vendor/etc/libnfc-cxd-RF.conf
+vendor/etc/libnfc-cxd22xx.conf
+vendor/firmware/cxd225x_firmware.bin
+
 # OMX
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
