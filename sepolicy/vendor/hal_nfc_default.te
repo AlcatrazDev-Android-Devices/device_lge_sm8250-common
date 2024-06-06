@@ -2,3 +2,5 @@ binder_call(hal_nfc_default, hal_secure_element_default)
 
 add_hwservice(hal_nfc_default, hal_nfc_hwservice)
 allow hal_nfc_default persist_lg_data_file:file { getattr open read };
+allow hal_nfc_default persist_lg_data_file:dir { search };
+allow hal_nfc_default mnt_vendor_file:dir search;
