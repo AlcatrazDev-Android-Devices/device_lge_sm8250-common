@@ -73,4 +73,13 @@
         <item>0</item> <!-- 3: HIGH -->
         <item>0</item> <!-- 4: SUN -->
     </integer-array>
+
+    <!-- Whether to enable framework dimming for UDFPS -->
+    <bool name="config_udfpsFrameworkDimming">true</bool>
+
+    <!-- Array of brightness-alpha LUT for framework dimming -->
+    <string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
+          <item>1,255</item>
+          <item>255,255</item>
+    </string-array>
 </resources>
