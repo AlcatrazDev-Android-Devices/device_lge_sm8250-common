@@ -38,6 +38,8 @@ enum HalFeature : int32_t {
     DigitalFilter,
     BalanceLeft,
     BalanceRight,
+    LGEAiSound,
+    LGEAiSoundMode,
 };
 
 /**

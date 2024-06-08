@@ -50,6 +50,10 @@ public class QuadDACPanelFragment extends PreferenceFragment
     private ArrayList<Integer> dac_features;
     private ArrayList<Integer> dhc_features;
 
+    private SwitchPreference aisound_switch;
+    private ListPreference aisound_mode_list;
+    private PreferenceCategory aisound_category;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         headsetPluggedFragmentReceiver = new HeadsetPluggedFragmentReceiver();
@@ -70,17 +74,30 @@ public class QuadDACPanelFragment extends PreferenceFragment
 
         try {
             if (preference instanceof SwitchPreference) {
+                if (preference.getKey().equals(Constants.DAC_SWITCH_KEY)) {
+                    boolean set_dac_on = (boolean) newValue;
 
-                boolean set_dac_on = (boolean) newValue;
+                    if (set_dac_on) {
+                        enableExtraSettings();
+                        QuadDAC.enable(dhc, dac);
+                        return true;
+                    } else {
+                        disableExtraSettings();
+                        QuadDAC.disable(dhc);
+                        return true;
+                    }
+                } else if (preference.getKey().equals(Constants.AISOUND_SWITCH_KEY)) {
+                    boolean set_aisound_on = (boolean) newValue;
 
-                if (set_dac_on) {
-                    enableExtraSettings();
-                    QuadDAC.enable(dhc, dac);
-                    return true;
-                } else {
-                    disableExtraSettings();
-                    QuadDAC.disable(dhc);
-                    return true;
+                    if (set_aisound_on) {
+                        enableExtraSettingsAiSound();
+                        QuadDAC.enableAiSound(dhc);
+                        return true;
+                    } else {
+                        disableExtraSettingsAiSound();
+                        QuadDAC.disableAiSound(dhc);
+                        return true;
+                    }
                 }
             }
             if (preference instanceof ListPreference) {
@@ -103,6 +120,12 @@ public class QuadDACPanelFragment extends PreferenceFragment
 
                     int sound_preset = lp.findIndexOfValue((String) newValue);
                     QuadDAC.setSoundPreset(dhc, sound_preset);
+                    return true;
+                } else if (preference.getKey().equals(Constants.AISOUND_MODE_KEY)) {
+                    ListPreference lp = (ListPreference) preference;
+
+                    int aisound_mode = lp.findIndexOfValue((String) newValue);
+                    QuadDAC.setAiSoundMode(dhc, aisound_mode);
                     return true;
                 }
                 return false;
@@ -164,6 +187,14 @@ public class QuadDACPanelFragment extends PreferenceFragment
 
         balance_preference = (BalancePreference) findPreference(Constants.BALANCE_KEY);
 
+        aisound_switch = (SwitchPreference) findPreference(Constants.AISOUND_SWITCH_KEY);
+        aisound_switch.setOnPreferenceChangeListener(this);
+
+        aisound_mode_list = (ListPreference) findPreference(Constants.AISOUND_MODE_KEY);
+        aisound_mode_list.setOnPreferenceChangeListener(this);
+
+        aisound_category = (PreferenceCategory) findPreference(Constants.AISOUND_CATEGORY_KEY);
+
         try {
             if (dhc_features.contains(HalFeature.QuadDAC)) {
                 quaddac_switch.setVisible(true);
@@ -191,6 +222,15 @@ public class QuadDACPanelFragment extends PreferenceFragment
             if (dac_features.contains(AdvancedFeature.HifiMode)) {
                 mode_list.setVisible(true);
                 mode_list.setValueIndex(dac.getFeatureValue(AdvancedFeature.HifiMode));
+            }
+
+            if (dhc_features.contains(HalFeature.LGEAiSound)) {
+                aisound_category.setVisible(true);
+                aisound_switch.setVisible(true);
+            }
+            if (dhc_features.contains(HalFeature.LGEAiSoundMode)) {
+                aisound_mode_list.setVisible(true);
+                aisound_mode_list.setValueIndex(dhc.getFeatureValue(HalFeature.LGEAiSoundMode));
             }
         } catch(Exception e) {
             Log.d(TAG, "addPreferencesFromResource: " + e.toString());
@@ -234,6 +274,16 @@ public class QuadDACPanelFragment extends PreferenceFragment
         mode_list.setEnabled(false);
         avc_volume.setEnabled(false);
         balance_preference.setEnabled(false);
+    }
+
+    private void enableExtraSettingsAiSound()
+    {
+        aisound_mode_list.setEnabled(true);
+    }
+
+    private void disableExtraSettingsAiSound()
+    {
+        aisound_mode_list.setEnabled(false);
     }
 
     private class HeadsetPluggedFragmentReceiver extends BroadcastReceiver {

@@ -104,4 +104,29 @@ public class QuadDAC {
         return dhc.getFeatureValue(HalFeature.QuadDAC) == 1;
     }
 
+    public static void enableAiSound(IDacHalControl dhc) throws RemoteException
+    {
+        dhc.setFeatureValue(HalFeature.LGEAiSound, 1);
+    }
+
+    public static void disableAiSound(IDacHalControl dhc) throws RemoteException
+    {
+        dhc.setFeatureValue(HalFeature.LGEAiSound, 0);
+    }
+
+    public static void setAiSoundMode(IDacHalControl dhc, int mode) throws RemoteException
+    {
+        dhc.setFeatureValue(HalFeature.LGEAiSoundMode, mode);
+    }
+
+    public static int getAiSoundMode(IDacHalControl dhc) throws RemoteException
+    {
+        return dhc.getFeatureValue(HalFeature.LGEAiSoundMode);
+    }
+
+    public static boolean isAiSoundEnabled(IDacHalControl dhc) throws RemoteException
+    {
+        return dhc.getFeatureValue(HalFeature.LGEAiSound) == 1;
+    }
+
 }

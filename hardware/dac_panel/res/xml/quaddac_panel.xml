@@ -61,5 +61,27 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:key="aisound_category"
+        app:title="@string/aisound_settings"
+        app:isPreferenceVisible="false" >
+
+        <SwitchPreference
+            app:key="aisound_switch"
+            app:summaryOn="@string/aisound_on"
+            app:summaryOff="@string/aisound_off"
+            app:title="@string/aisound"
+            app:isPreferenceVisible="false" />
+
+        <ListPreference
+            app:key="aisound_mode_dropdown"
+            app:title="@string/aisound_modes"
+            app:summary="%s"
+            app:entries="@array/aisound_mode_entry_values"
+            app:entryValues="@array/aisound_mode_entry_values"
+            app:isPreferenceVisible="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
 

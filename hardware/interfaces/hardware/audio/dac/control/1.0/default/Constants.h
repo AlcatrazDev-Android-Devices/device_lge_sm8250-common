@@ -51,4 +51,11 @@
 #define SET_LEFT_BALANCE_COMMAND            "hifi_dac_l_volume"
 #define SET_RIGHT_BALANCE_COMMAND           "hifi_dac_r_volume"
 
+#define PROPERTY_LGE_AISOUND_ENABLED        "persist.vendor.lge.audio.aisound"
+#define PROPERTY_LGE_AISOUND_MODE           "persist.vendor.lge.audio.aisound_mode"
+#define LGE_AISOUND_SWITCH_COMMAND          "op_virt_on"
+#define LGE_AISOUND_ON_COMMAND              "on"
+#define LGE_AISOUND_OFF_COMMAND             "off"
+#define LGE_AISOUND_MODE_COMMAND            "op_virt_mode"
+
 #endif  // VENDOR_LGE_HARDWARE_AUDIO_DAC_CONTROL_V1_0_CONSTANTS_H

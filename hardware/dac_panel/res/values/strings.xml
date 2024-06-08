@@ -38,5 +38,15 @@
     <string name="avc_volume">AVC Volume</string>
     <string name="avc_volume_summary">Amplifies volume</string>
 
+    <string name="aisound">LG 3D Sound Engine</string>
+    <string name="aisound_settings">LG 3D Sound Settings</string>
+    <string name="aisound_on">Engine on</string>
+    <string name="aisound_off">Engine off</string>
+    <string name="aisound_modes">Modes</string>
+    <string name="aisound_auto">Auto</string>
+    <string name="aisound_cinema">Cinema</string>
+    <string name="aisound_music">Music</string>
+    <string name="aisound_voice">Voice</string>
+
 </resources>
 
