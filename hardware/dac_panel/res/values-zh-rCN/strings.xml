@@ -24,4 +24,13 @@
     <string name="hifi_mode_aux-him">AUX 高阻抗</string>
     <string name="avc_volume">AVC 音量</string>
     <string name="avc_volume_summary">放大音量</string>
+    <string name="aisound">LG 3D 声音引擎</string>
+    <string name="aisound_settings">LG 3D 声音设置</string>
+    <string name="aisound_on">音效 开</string>
+    <string name="aisound_off">音效 关</string>
+    <string name="aisound_modes">模式选择</string>
+    <string name="aisound_auto">自动</string>
+    <string name="aisound_cinema">影院</string>
+    <string name="aisound_music">音乐</string>
+    <string name="aisound_voice">语音</string>
 </resources>

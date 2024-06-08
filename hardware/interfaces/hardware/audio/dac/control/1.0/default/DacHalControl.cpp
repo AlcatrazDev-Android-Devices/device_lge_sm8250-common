@@ -47,6 +47,12 @@ static std::vector<KeyValue> digital_filters = {{"Short", "0"},
                                                 {"Sharp", "1"},
                                                 {"Slow", "2"}};
 
+static std::vector<KeyValue> aisound_states = {{"Off", "0"}, {"On", "1"}};
+
+static std::vector<KeyValue> aisound_modes = {{"Auto", "0"},
+                                              {"Cinema", "1"},
+                                              {"Music", "2"},
+                                              {"Voice", "3"}};
 
 
 DacHalControl::DacHalControl() {
@@ -197,11 +203,25 @@ DacHalControl::DacHalControl() {
     balanceright_fstates.range.step = 1;
     mSupportedStates.emplace(HalFeature::BalanceRight, balanceright_fstates);
 
+    /* Ai Sound */
+    mSupportedHalFeatures.push_back(HalFeature::LGEAiSound);
+    FeatureStates aisound_fstates;
+    aisound_fstates.states = hidl_vec<KeyValue> {aisound_states};
+    mSupportedStates.emplace(HalFeature::LGEAiSound, aisound_fstates);
+
+    /* Ai Sound Mode */
+    mSupportedHalFeatures.push_back(HalFeature::LGEAiSoundMode);
+    FeatureStates aisound_mode_fstates;
+    aisound_mode_fstates.states = hidl_vec<KeyValue> {aisound_modes};
+    mSupportedStates.emplace(HalFeature::LGEAiSoundMode, aisound_mode_fstates);
+
     setFeatureValue(HalFeature::QuadDAC, getFeatureValue(HalFeature::QuadDAC));
     setFeatureValue(HalFeature::DigitalFilter, getFeatureValue(HalFeature::DigitalFilter));
     setFeatureValue(HalFeature::SoundPreset, getFeatureValue(HalFeature::SoundPreset));
     setFeatureValue(HalFeature::BalanceLeft, getFeatureValue(HalFeature::BalanceLeft));
     setFeatureValue(HalFeature::BalanceRight, getFeatureValue(HalFeature::BalanceRight));
+    setFeatureValue(HalFeature::LGEAiSound, getFeatureValue(HalFeature::LGEAiSound));
+    setFeatureValue(HalFeature::LGEAiSoundMode, getFeatureValue(HalFeature::LGEAiSoundMode));
 }
 
 Return<void> DacHalControl::getSupportedHalFeatures(getSupportedHalFeatures_cb _hidl_cb) {
@@ -244,6 +264,14 @@ Return<bool> DacHalControl::setFeatureValue(HalFeature feature, int32_t value) {
         } else if(value == 1) {
             kv.value = SET_DAC_ON_COMMAND;
         }
+    } else if(feature == HalFeature::LGEAiSound) {
+        kv.name = LGE_AISOUND_SWITCH_COMMAND;
+        property = PROPERTY_LGE_AISOUND_ENABLED;
+        if(value == 0) {
+            kv.value = LGE_AISOUND_OFF_COMMAND;
+        } else if(value == 1) {
+            kv.value = LGE_AISOUND_ON_COMMAND;
+        }
     } else {
         switch(feature) {
             case HalFeature::DigitalFilter: {
@@ -264,6 +292,11 @@ Return<bool> DacHalControl::setFeatureValue(HalFeature feature, int32_t value) {
             case HalFeature::BalanceRight: {
                 kv.name = SET_RIGHT_BALANCE_COMMAND;
                 property = PROPERTY_RIGHT_BALANCE;
+                break;
+            }
+            case HalFeature::LGEAiSoundMode: {
+                kv.name = LGE_AISOUND_MODE_COMMAND;
+                property = PROPERTY_LGE_AISOUND_MODE;
                 break;
             }
             default: return false;
@@ -338,6 +371,16 @@ Return<int32_t> DacHalControl::getFeatureValue(HalFeature feature) {
         } else {
             ret = 0;
         }
+    } else if(feature == HalFeature::LGEAiSound) {
+        property = PROPERTY_LGE_AISOUND_ENABLED;
+        property_get(property.c_str(), value, "off");
+        if(strcmp(value, LGE_AISOUND_OFF_COMMAND) == 0) {
+            ret = 0;
+        } else if(strcmp(value, LGE_AISOUND_ON_COMMAND) == 0) {
+            ret = 1;
+        } else {
+            ret = 0;
+        }
     } else {
         switch(feature) {
             case HalFeature::DigitalFilter: {
@@ -354,6 +397,10 @@ Return<int32_t> DacHalControl::getFeatureValue(HalFeature feature) {
             }
             case HalFeature::BalanceRight: {
                 property = PROPERTY_RIGHT_BALANCE;
+                break;
+            }
+            case HalFeature::LGEAiSoundMode: {
+                property = PROPERTY_LGE_AISOUND_MODE;
                 break;
             }
             default: return false;

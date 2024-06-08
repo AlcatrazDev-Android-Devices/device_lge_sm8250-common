@@ -21,6 +21,13 @@
         <item>@string/hifi_mode_aux-him</item>
     </string-array>
 
+    <string-array name="aisound_mode_entry_values" translatable="false">
+        <item>@string/aisound_auto</item>
+        <item>@string/aisound_cinema</item>
+        <item>@string/aisound_music</item>
+        <item>@string/aisound_voice</item>
+    </string-array>
+
 </resources>
 
 

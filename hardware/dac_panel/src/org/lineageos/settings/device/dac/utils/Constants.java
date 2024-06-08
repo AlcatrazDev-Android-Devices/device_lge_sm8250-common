@@ -14,4 +14,7 @@ public class Constants {
     public static final String HIFI_MODE_KEY = "hifi_mode_dropdown";
     public static final String AVC_VOLUME_KEY = "avc_volume_seekbar";
 
+    public static final String AISOUND_CATEGORY_KEY = "aisound_category";
+    public static final String AISOUND_SWITCH_KEY = "aisound_switch";
+    public static final String AISOUND_MODE_KEY = "aisound_mode_dropdown";
 }
