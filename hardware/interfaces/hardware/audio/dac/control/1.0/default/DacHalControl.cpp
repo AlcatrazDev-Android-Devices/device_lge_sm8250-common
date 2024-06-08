@@ -204,24 +204,24 @@ DacHalControl::DacHalControl() {
     mSupportedStates.emplace(HalFeature::BalanceRight, balanceright_fstates);
 
     /* Ai Sound */
-    mSupportedHalFeatures.push_back(HalFeature::LGEAiSound);
-    FeatureStates aisound_fstates;
-    aisound_fstates.states = hidl_vec<KeyValue> {aisound_states};
-    mSupportedStates.emplace(HalFeature::LGEAiSound, aisound_fstates);
+    // mSupportedHalFeatures.push_back(HalFeature::LGEAiSound);
+    // FeatureStates aisound_fstates;
+    // aisound_fstates.states = hidl_vec<KeyValue> {aisound_states};
+    // mSupportedStates.emplace(HalFeature::LGEAiSound, aisound_fstates);
 
     /* Ai Sound Mode */
-    mSupportedHalFeatures.push_back(HalFeature::LGEAiSoundMode);
-    FeatureStates aisound_mode_fstates;
-    aisound_mode_fstates.states = hidl_vec<KeyValue> {aisound_modes};
-    mSupportedStates.emplace(HalFeature::LGEAiSoundMode, aisound_mode_fstates);
+    // mSupportedHalFeatures.push_back(HalFeature::LGEAiSoundMode);
+    // FeatureStates aisound_mode_fstates;
+    // aisound_mode_fstates.states = hidl_vec<KeyValue> {aisound_modes};
+    // mSupportedStates.emplace(HalFeature::LGEAiSoundMode, aisound_mode_fstates);
 
     setFeatureValue(HalFeature::QuadDAC, getFeatureValue(HalFeature::QuadDAC));
     setFeatureValue(HalFeature::DigitalFilter, getFeatureValue(HalFeature::DigitalFilter));
     setFeatureValue(HalFeature::SoundPreset, getFeatureValue(HalFeature::SoundPreset));
     setFeatureValue(HalFeature::BalanceLeft, getFeatureValue(HalFeature::BalanceLeft));
     setFeatureValue(HalFeature::BalanceRight, getFeatureValue(HalFeature::BalanceRight));
-    setFeatureValue(HalFeature::LGEAiSound, getFeatureValue(HalFeature::LGEAiSound));
-    setFeatureValue(HalFeature::LGEAiSoundMode, getFeatureValue(HalFeature::LGEAiSoundMode));
+    // setFeatureValue(HalFeature::LGEAiSound, getFeatureValue(HalFeature::LGEAiSound));
+    // setFeatureValue(HalFeature::LGEAiSoundMode, getFeatureValue(HalFeature::LGEAiSoundMode));
 }
 
 Return<void> DacHalControl::getSupportedHalFeatures(getSupportedHalFeatures_cb _hidl_cb) {
