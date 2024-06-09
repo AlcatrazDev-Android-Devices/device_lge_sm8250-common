@@ -73,6 +73,10 @@ struct BiometricsFingerprint : public IBiometricsFingerprint {
 
     sp<IBiometricsFingerprint_2_1> biometrics_2_1_service;
     sp<ILgeBiometricsFingerprint> mLgeFingerprint;
+
+    bool isNowEnrolling = false;
+    int delayForHbmOn;
+    int delayForHbmAutoOff;
 };
 
 }  // namespace implementation
