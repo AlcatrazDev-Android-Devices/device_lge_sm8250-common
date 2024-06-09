@@ -72,7 +72,11 @@ void BiometricsFingerprint::enableHighBrightFod() {
     mLgeFingerprint->extraCmd(NOTIFY_SCAN_START, {},
                                    [](const hidl_vec<signed char> &) {});
 
-    setFodHbm(true);
+    delayForHbmOn = isNowEnrolling ? 40 : 34;
+    std::thread([this]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(delayForHbmOn));
+        setFodHbm(true);
+    }).detach();
 
     hbmFodEnabled = true;
 }
@@ -90,6 +94,7 @@ Return<uint64_t> BiometricsFingerprint::setNotify(
 }
 
 Return<uint64_t> BiometricsFingerprint::preEnroll() {
+    isNowEnrolling = true;
     return biometrics_2_1_service->preEnroll();
 }
 
@@ -99,6 +104,7 @@ Return<RequestStatus> BiometricsFingerprint::enroll(const hidl_array<uint8_t, 69
 }
 
 Return<RequestStatus> BiometricsFingerprint::postEnroll() {
+    isNowEnrolling = false;
     return biometrics_2_1_service->postEnroll();
 }
 
@@ -137,9 +143,10 @@ Return<bool> BiometricsFingerprint::isUdfps(uint32_t) {
 
 Return<void> BiometricsFingerprint::onFingerDown(uint32_t, uint32_t, float, float) {
     BiometricsFingerprint::enableHighBrightFod();
-
+    
+    delayForHbmAutoOff = isNowEnrolling ? 500 : 388;
     std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(delayForHbmAutoOff));
         BiometricsFingerprint::onFingerUp();
     }).detach();
 
