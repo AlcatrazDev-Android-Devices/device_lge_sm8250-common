@@ -1,0 +1,5 @@
+<permissions>
+    <privapp-permissions package="org.lineageos.settings.device.dac">
+        <permission name="android.permission.READ_LOGS" />
+    </privapp-permissions>
+</permissions>

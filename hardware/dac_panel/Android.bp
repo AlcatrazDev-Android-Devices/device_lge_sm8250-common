@@ -36,5 +36,16 @@ android_app {
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
+
+    required: [
+        "privapp-permissions_org.lineageos.settings.device.dac",
+    ],
 }
 
+prebuilt_etc {
+    name: "privapp-permissions_org.lineageos.settings.device.dac",
+    sub_dir: "permissions",
+    src: "privapp-permissions_org.lineageos.settings.device.dac.xml",
+    system_ext_specific: true,
+    filename_from_src: true,
+}
