@@ -204,6 +204,13 @@ extern void log_utils_init(void);
 extern void log_utils_deinit(void);
 #endif
 
+#ifdef LGE_ESS_DAC
+/* Internal hal ESS dac props */
+/* Default to unsupported for non dac devices */
+static bool ESS_HIFI_SUPPORT = false;
+static bool ESS_HIFI_ENABLE = false;
+#endif
+
 char cal_name_info[WCD9XXX_MAX_CAL][MAX_CAL_NAME] = {
         [WCD9XXX_ANC_CAL] = "anc_cal",
         [WCD9XXX_MBHC_CAL] = "mbhc_cal",
@@ -640,6 +647,10 @@ static const char * device_table[SND_DEVICE_MAX] = {
     [SND_DEVICE_OUT_BUS_PAX] = "bus-speaker",
     [SND_DEVICE_OUT_BUS_RSE] = "bus-speaker",
     [SND_DEVICE_OUT_CALL_PROXY] = "call-proxy",
+#ifdef LGE_ESS_DAC
+    /* ESS Audio Devices */
+    [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = "headphones-hifi-dac",
+#endif
 
     /* Capture sound devices */
     [SND_DEVICE_IN_HANDSET_MIC] = "handset-mic",
@@ -868,6 +879,10 @@ static int acdb_device_table[SND_DEVICE_MAX] = {
     [SND_DEVICE_OUT_VOICE_HAC_HANDSET] = 53,
     [SND_DEVICE_OUT_VOICE_HEADPHONES] = 10,
     [SND_DEVICE_OUT_VOICE_HEADSET] = 10,
+#ifdef LGE_ESS_DAC
+     /* ESS ACDB IDS */
+    [SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = 10,
+#endif
     [SND_DEVICE_OUT_VOICE_LINE] = 10,
     [SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_HEADPHONES] = 10,
     [SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_ANC_HEADSET] = 10,
@@ -1107,6 +1122,10 @@ static struct name_to_index snd_device_name_index[SND_DEVICE_MAX] = {
     {TO_NAME_INDEX(SND_DEVICE_OUT_HEADPHONES_HIFI_FILTER)},
     {TO_NAME_INDEX(SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES_HIFI_FILTER)},
     {TO_NAME_INDEX(SND_DEVICE_OUT_HEADPHONES_44_1)},
+#ifdef LGE_ESS_DAC
+    /* ESS */
+    {TO_NAME_INDEX(SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC)},
+#endif
     {TO_NAME_INDEX(SND_DEVICE_OUT_LINE)},
     {TO_NAME_INDEX(SND_DEVICE_OUT_SPEAKER_AND_HAPTICS)},
     {TO_NAME_INDEX(SND_DEVICE_OUT_HEADPHONES_AND_HAPTICS)},
@@ -2028,6 +2047,11 @@ void platform_set_echo_reference(struct audio_device *adev, bool enable,
         if (adev->snd_dev_ref_cnt[SND_DEVICE_OUT_HEADPHONES_44_1] > 0)
             strlcat(ec_ref_mixer_path, " headphones-44.1",
                     MIXER_PATH_MAX_LENGTH);
+#ifdef LGE_ESS_DAC
+        else if (adev->snd_dev_ref_cnt[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] > 0)
+            strlcat(ec_ref_mixer_path, " headphones-hifi-dac",
+                    MIXER_PATH_MAX_LENGTH);
+#endif
         else if (adev->snd_dev_ref_cnt[SND_DEVICE_OUT_SPEAKER_VBAT] > 0)
             strlcat(ec_ref_mixer_path, " speaker-vbat",
                     MIXER_PATH_MAX_LENGTH);
@@ -2342,6 +2366,10 @@ static void set_platform_defaults(struct platform_data * my_data)
     backend_tag_table[SND_DEVICE_OUT_HEADPHONES_AND_HAPTICS] =
         strdup("headphones-and-haptics");
     backend_tag_table[SND_DEVICE_OUT_HEADPHONES_44_1] = strdup("headphones-44.1");
+#ifdef LGE_ESS_DAC
+    /* ESS */
+    backend_tag_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = strdup("headphones-hifi-dac");
+#endif
     backend_tag_table[SND_DEVICE_OUT_VOICE_SPEAKER_VBAT] = strdup("voice-speaker-vbat");
     backend_tag_table[SND_DEVICE_OUT_VOICE_SPEAKER_2_VBAT] = strdup("voice-speaker-2-vbat");
     backend_tag_table[SND_DEVICE_OUT_BT_A2DP] = strdup("bt-a2dp");
@@ -2600,6 +2628,10 @@ static void set_platform_defaults(struct platform_data * my_data)
     hw_interface_table[SND_DEVICE_IN_VOICE_HEARING_AID] = strdup("SLIMBUS_0_TX");
     hw_interface_table[SND_DEVICE_IN_BUS] = strdup("TERT_TDM_TX_0");
     hw_interface_table[SND_DEVICE_IN_CALL_PROXY] = strdup("CALL_PROXY_TX");
+#ifdef LGE_ESS_DAC
+    /* ESS interface table defaults */
+    hw_interface_table[SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC] = strdup("TERT_MI2S_RX");
+#endif
     my_data->max_mic_count = PLATFORM_DEFAULT_MIC_COUNT;
 
      /*remove ALAC & APE from DSP decoder list based on software decoder availability*/
@@ -3147,6 +3179,18 @@ void *platform_init(struct audio_device *adev)
     int cfg_value = -1;
     bool dual_mic_config = false;
     struct snd_card_split *snd_split_handle = NULL;
+
+#ifdef LGE_ESS_DAC
+    /*Check ess settings */
+    property_get("persist.vendor.audio.ess.supported",value,"");
+    if (!strncmp("true", value, sizeof("true"))){
+    	ESS_HIFI_SUPPORT = true;
+    	property_get("persist.vendor.audio.hifi.enabled",value,"");
+    	if (!strncmp("true", value, sizeof("true"))){
+    	ESS_HIFI_ENABLE = true;
+    	}
+    }
+#endif
 
     list_init(&operator_info_list);
     list_init(&app_type_entry_list);
@@ -6674,6 +6718,10 @@ snd_device_t platform_get_output_snd_device(void *platform, struct stream_out *o
                 snd_device = SND_DEVICE_OUT_HEADPHONES_44_1;
         } else if (out->format == AUDIO_FORMAT_DSD) {
                 snd_device = SND_DEVICE_OUT_HEADPHONES_DSD;
+#ifdef LGE_ESS_DAC
+        } else if((ESS_HIFI_ENABLE == true) && (ESS_HIFI_SUPPORT == true)){
+        	snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC;
+#endif
         } else if (audio_extn_is_hifi_filter_enabled(adev, out, snd_device,
              my_data->codec_variant, channel_count, 1)) {
                 snd_device = SND_DEVICE_OUT_HEADPHONES_HIFI_FILTER;
@@ -10221,6 +10269,17 @@ static bool platform_check_codec_backend_cfg(struct audio_device* adev,
             }
         }
     }
+
+#ifdef LGE_ESS_DAC
+    /*If the sound device is
+    SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC,
+    re-route to the dac */
+
+    if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC) {
+           audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac");
+           ALOGI("%s: ESS HIFI SUPPORTED, USING HIFI MODE...\n", __func__);
+    }
+#endif
 
     return backend_change;
 }

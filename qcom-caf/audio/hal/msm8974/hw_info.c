@@ -223,6 +223,11 @@ static const snd_device_t tasha_liquid_variant_devices[] = {
     SND_DEVICE_IN_SPEAKER_DMIC_STEREO,
 };
 
+#ifdef LGE_ESS_DAC
+static const snd_device_t ess_audio_devices[] = {
+    SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC,
+};
+#endif
 
 static const snd_device_t tavil_qrd_variant_devices[] = {
     SND_DEVICE_OUT_SPEAKER,
