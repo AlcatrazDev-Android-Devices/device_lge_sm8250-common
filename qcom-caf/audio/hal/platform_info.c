@@ -51,7 +51,7 @@
 #endif
 
 #define BUF_SIZE                    1024
-char vendor_config_path[VENDOR_CONFIG_PATH_MAX_LENGTH];
+extern char vendor_config_path[VENDOR_CONFIG_PATH_MAX_LENGTH];
 char platform_info_xml_path_file[VENDOR_CONFIG_FILE_MAX_LENGTH];
 
 typedef enum {

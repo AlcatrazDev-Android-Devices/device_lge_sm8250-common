@@ -1171,7 +1171,7 @@ static void check_and_enable_ess_hifi(struct audio_device *adev, struct audio_us
                 ALOGD("%s: ESS hifi requested...", __func__);
                 disable_audio_route(adev, usecase);
                 disable_snd_device(adev, usecase->out_snd_device);
-                usecase->out_snd_device = SND_DEVICE_OUT_HEADPHONES_HIFI_DAC;
+                usecase->out_snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC;
                 audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac");
                 platform_set_snd_device_backend(usecase->out_snd_device, "TERT_MI2S_RX", "TERT_MI2S_RX");
                 ALOGD("%s: Setting ESS hifi mode \n", __func__);

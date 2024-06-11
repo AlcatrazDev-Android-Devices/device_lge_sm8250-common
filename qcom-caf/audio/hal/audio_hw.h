@@ -251,7 +251,7 @@ enum {
     AUDIO_USECASE_MAX
 };
 
-const char * const use_case_table[AUDIO_USECASE_MAX];
+extern const char * const use_case_table[AUDIO_USECASE_MAX];
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 
