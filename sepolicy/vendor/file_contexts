@@ -16,6 +16,7 @@
 
 # Camera sensors
 /sys/devices/virtual/input/input2(/.*)?                                                               u:object_r:sysfs_camera_sensors:s0
+/sys/devices/virtual/input/input1/flicker_sw_power_state                                              u:object_r:sysfs_camera_sensors:s0
 
 # Charger
 /sys/devices/platform/soc/884000.i2c/i2c-3/3-0010/884000.i2c:qcom,smb1390@10:qcom,charge_pump(/.*)?    u:object_r:sysfs_charger:s0
@@ -53,6 +54,7 @@
 
 # LG
 /mnt/vendor/absolute(/.*)?                              u:object_r:abt_pers_data_file:s0
+/sys/devices/virtual/input/lge_sar_rf/onoff             u:object_r:sysfs_lge_sar_rf:s0
 
 # OP files
 /vendor/OP(/.*)?                                       u:object_r:op_file:s0
@@ -94,32 +96,3 @@
 
 # Wireless charger
 /sys/devices/platform/soc/990000.i2c/i2c-1/1-0061/power_supply/wireless(/.*)?                u:object_r:sysfs_powersupply_wireless:s0
-
-# Wakeup
-/sys/devices/platform/soc/9800000.qcom,npu/wakeup/wakeup48(/.*)?                                                                                  u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/vendor/vendor:lge_usb_ds3/wakeup/wawkeup67(/.*)?                                                                            u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/990000.i2c/i2c-1/1-0061/power_supply/wireless/wakeup38(/.*)?                                                            u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/990000.i2c/i2c-1/1-0061/wakeup/wakeup37(/.*)?                                                                           u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/884000.i2c/i2c-3/3-0010/884000.i2c:qcom,smb1390@10:qcom,charge_pump/power_supply/charge_pump_master/wakeup60(/.*)?      u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/vendor/vendor:lge-veneer-psy/power_supply/veneer/wakeup41(/.*)?                                                             u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/5c00000.qcom,ssc/wakeup/wakeup24(/.*)?                                                                                  u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-08/c440000.qcom,spmi:qcom,pmxprairie@8:qcom,power-on@800/wakeup/wakeup2(/.*)?            u:object_r:sysfs_wakeup:s0
-/sys/devices/virtual/misc/pn547/wakeup36(/.*)?                                                                                                    u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/8300000.qcom,turing/wakeup/wakeup16(/.*)?                                                                               u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/b0000000.qcom,cnss-qca6390/wakeup/wakeup68(/.*)?                                                                        u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/a94000.i2c/i2c-2/2-0028/wakeup/wakeup72(/.*)?                                                                           u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/soc:qcom,smp2p-cdsp/wakeup/wakeup9(/.*)?                                                                                u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/17300000.qcom,lpass/wakeup/wakeup14(/.*)?                                                                               u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/abb0000.qcom,cvpss/wakeup/wakeup22(/.*)?                                                                                u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/soc:qcom,ipa_uc/wakeup/wakeup12(/.*)?                                                                                   u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/998000.qcom,qup_uart/wakeup/wakeup30(/.*)?                                                                              u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/soc:qcom,smp2p-dsps/wakeup/wakeup8(/.*)?                                                                                u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/188101c.qcom,spss/wakeup/wakeup20(/.*)?                                                                                 u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/1c10000.qcom,pcie/wakeup/wakeup6(/.*)?                                                                                  u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/vendor/vendor:lge_usb_ds3/wakeup/wakeup67(/.*)?                                                                             u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup/wakeup147(/.*)?                         u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/soc:qcom,smp2p-npu/wakeup/wakeup47(/.*)?                                                                                u:object_r:sysfs_wakeup:s0
-/sys/devices/0306_02.01.00/wakeup/wakeup125(/.*)?                                                                                                 u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/1101_00.01.00/wakeup/wakeup45(/.*)?                              u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-04/c440000.qcom,spmi:qcom,pm8150l@4:qcom,power-on@800/wakeup/wakeup1(/.*)?               u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup/wakeup151(/.*)?                         u:object_r:sysfs_wakeup:s0
