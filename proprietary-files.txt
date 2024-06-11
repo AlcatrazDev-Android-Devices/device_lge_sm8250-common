@@ -55,6 +55,7 @@ vendor/lib/libdrc.so
 vendor/lib/libqtigef.so
 vendor/lib/libssrec.so
 vendor/lib/libsurround_3mic_proc.so
+vendor/lib/libwebrtc_audio_preprocessing.so
 vendor/lib64/soundfx/libaisound.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/liblgeffectwrapper.so
@@ -75,11 +76,6 @@ vendor/lib64/libaudioconfigstore.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libqtigef.so
 vendor/lib64/libssrec.so
-
-# Audio
-vendor/lib/hw/audio.primary.kona.so
-vendor/lib/libwebrtc_audio_preprocessing.so
-vendor/lib64/hw/audio.primary.kona.so
 vendor/lib64/libwebrtc_audio_preprocessing.so
 
 # Audio amplifier firmware
