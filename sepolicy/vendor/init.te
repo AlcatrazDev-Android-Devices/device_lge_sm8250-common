@@ -19,3 +19,4 @@ allowxperm init per_boot_file:file ioctl { F2FS_IOC_SET_PIN_FILE };
 
 allow init debugfs_tracing_debug:dir mounton;
 allow init mnt_product_file:dir mounton;
+allow init functionfs:dir mounton;
