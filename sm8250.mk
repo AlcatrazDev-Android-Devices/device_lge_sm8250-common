@@ -264,6 +264,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.lge_sm8250
+
 # Livedisplay
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service.lge
