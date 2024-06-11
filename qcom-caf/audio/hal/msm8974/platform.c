@@ -204,12 +204,6 @@ extern void log_utils_init(void);
 extern void log_utils_deinit(void);
 #endif
 
-#ifdef LGE_ESS_DAC
-/* Internal hal ESS dac props */
-/* Default to unsupported for non dac devices */
-static bool ESS_HIFI_SUPPORT = false;
-#endif
-
 char cal_name_info[WCD9XXX_MAX_CAL][MAX_CAL_NAME] = {
         [WCD9XXX_ANC_CAL] = "anc_cal",
         [WCD9XXX_MBHC_CAL] = "mbhc_cal",
@@ -3194,13 +3188,6 @@ void *platform_init(struct audio_device *adev)
     int cfg_value = -1;
     bool dual_mic_config = false;
     struct snd_card_split *snd_split_handle = NULL;
-
-#ifdef LGE_ESS_DAC
-    /*Check ess settings */
-    if (property_get_bool("persist.vendor.audio.ess.supported", false) == true){
-    	ESS_HIFI_SUPPORT = true;
-    }
-#endif
 
     list_init(&operator_info_list);
     list_init(&app_type_entry_list);
@@ -6749,16 +6736,6 @@ snd_device_t platform_get_output_snd_device(void *platform, struct stream_out *o
                 snd_device = SND_DEVICE_OUT_HEADPHONES_44_1;
         } else if (out->format == AUDIO_FORMAT_DSD) {
                 snd_device = SND_DEVICE_OUT_HEADPHONES_DSD;
-#ifdef LGE_ESS_DAC
-        } else if(((property_get_bool("persist.vendor.audio.hifi.enabled", false) == true)) && (ESS_HIFI_SUPPORT == true)){
-        	if(property_get_bool("persist.vendor.audio.hifi.advanced", false) == true){
-        	    snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED;
-            } else if(property_get_bool("persist.audio.hifi.aux", false) == true) {
-        	    snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX;
-        	} else {
-        	    snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC;
-        	}
-#endif
         } else if (audio_extn_is_hifi_filter_enabled(adev, out, snd_device,
              my_data->codec_variant, channel_count, 1)) {
                 snd_device = SND_DEVICE_OUT_HEADPHONES_HIFI_FILTER;
@@ -10306,23 +10283,6 @@ static bool platform_check_codec_backend_cfg(struct audio_device* adev,
             }
         }
     }
-
-#ifdef LGE_ESS_DAC
-    /*If the sound device is
-    SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC,
-    re-route to the dac */
-
-    if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC) {
-           audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac");
-           ALOGI("%s: Applying ess hifi route... \n", __func__);
-    } else if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED) {
-           audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac-advanced");
-           ALOGI("%s: Applying advanced ess hifi route\n", __func__);
-    } else if (snd_device == SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX) {
-           audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac-aux");
-           ALOGI("%s: Applying aux ess hifi route\n", __func__);
-    }
-#endif
 
     return backend_change;
 }

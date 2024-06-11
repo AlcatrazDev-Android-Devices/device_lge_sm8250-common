@@ -1162,6 +1162,85 @@ int pcm_ioctl(struct pcm *pcm, int request, ...)
     return ioctl(pcm_fd, request, arg);
 }
 
+#ifdef LGE_ESS_DAC
+//static void set_ess_sampling_rate(){} TODO: Trigger ess routing when >48khz sampling rate detected. This function will also allow userspace control of S.R on ess
+
+//static void set_ess_bitrate(){} TODO: Trigger ess when bitrate >16. This function will also allow userspace control of Bitrate on ess. 
+
+static void set_ess_backend(snd_device_t snd_device){
+    if (property_get_bool("persist.vendor.audio.ess.supported", false) == true) {
+        if (snd_device == SND_DEVICE_OUT_HEADPHONES) {
+        ALOGD("%s: Restoring WCD backend \n", __func__);
+        platform_set_snd_device_backend(SND_DEVICE_OUT_HEADPHONES, "headphones", "SLIMBUS_6_RX");  //Needed as a workaround, refer to main func.
+        }
+        else if (snd_device == SND_DEVICE_OUT_HEADPHONES_HIFI_DAC) {
+        ALOGD("%s: Setting ESS hifi backend \n", __func__); 
+        //platform_set_snd_device_backend(SND_DEVICE_OUT_HEADPHONES_HIFI_DAC, "ess-headphones-hifi", "SEC_MI2S_RX");  ESS backend is broken it seems. Causes pcm_prepare to return -1
+        }
+        else if (snd_device == SND_DEVICE_OUT_HEADPHONES_HIFI_DAC_ADVANCED) {
+        ALOGD("%s: Setting ESS hifi advanced backend \n", __func__); 
+        //platform_set_snd_device_backend(SND_DEVICE_OUT_HEADPHONES_HIFI_DAC_AUX, "ess-headphones-hifi-advanced", "SEC_MI2S_RX"); ESS backend is broken it seems. Causes pcm_prepare to return -1
+        }
+        else if (snd_device == SND_DEVICE_OUT_HEADPHONES_HIFI_DAC_AUX) {
+        ALOGD("%s: Setting ESS hifi aux backend \n", __func__); 
+        //platform_set_snd_device_backend(SND_DEVICE_OUT_HEADPHONES_HIFI_DAC_AUX, "ess-headphones-hifi-aux", "SEC_MI2S_RX"); ESS backend is broken it seems. Causes pcm_prepare to return -1
+        }
+        else { ALOGD("%s: Not an ess hifi scenario \n", __func__); }
+        }
+}   
+
+static void check_and_enable_ess_hifi(struct audio_device *adev, struct audio_usecase *usecase, snd_device_t snd_device)
+{
+    if (property_get_bool("persist.vendor.audio.ess.supported", false) == true) {
+        if (snd_device == SND_DEVICE_OUT_HEADPHONES){
+		if (property_get_bool("persist.vendor.audio.hifi.enabled", false) == true) {
+		    ALOGD("%s: ESS hifi requested...", __func__);
+		    disable_audio_route(adev, usecase);
+		    disable_snd_device(adev, usecase->out_snd_device);
+		    switch (property_get_int32("persist.vendor.audio.ess.mode", 0))
+		    {
+		    case 0:
+		        usecase->out_snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC;
+		        audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac");
+		        ALOGD("%s: Setting ESS hifi mode \n", __func__);
+		        break;
+		    case 1:
+		        usecase->out_snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_ADVANCED;
+		        audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac-advanced");
+		        ALOGD("%s: Setting advanced ESS hifi mode \n", __func__);
+		        break;
+		    case 2:
+		        usecase->out_snd_device = SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DAC_AUX;
+		        audio_route_apply_and_update_path(adev->audio_route, "headphones-hifi-dac-aux");
+		        ALOGD("%s: Setting aux ESS hifi mode \n", __func__);
+		        break;
+		    default:
+		        usecase->out_snd_device = SND_DEVICE_OUT_HEADPHONES;
+		        audio_route_apply_and_update_path(adev->audio_route, "headphones");
+		        ALOGE("%s: INVALID ESS MODE... Using standard headphone route.\n", __func__);
+		    }
+		} else if (property_get_bool("persist.audio.hifi.enabled", false) == false) {
+		    ALOGD("%s: ESS hifi not requested\n", __func__);
+		    /*#############TEMP########### | Needed to restore routing to WCD
+		    (unless i fail to find a bettter solution)
+		
+		    Description: RIght now it seems that audio gets stuck routing to dac after the initial route switch. 
+		    So, reset the route and sound device to restore the WCD routing. 
+		    */
+		    disable_audio_route(adev, usecase);
+		    disable_snd_device(adev, usecase->out_snd_device);
+		    usecase->out_snd_device = SND_DEVICE_OUT_HEADPHONES;
+		    audio_route_apply_and_update_path(adev->audio_route, "headphones");
+		}
+		enable_snd_device(adev, usecase->out_snd_device);
+		set_ess_backend(usecase->out_snd_device);
+	}
+	else { ALOGD("%s: Not an ESS hifi scenario \n", __func__); }
+    }
+    else { ALOGE("%s: ESS hifi not supported on this device! \n", __func__); }
+}
+#endif
+
 int enable_audio_route(struct audio_device *adev,
                        struct audio_usecase *usecase)
 {
@@ -1347,7 +1426,7 @@ int enable_snd_device(struct audio_device *adev,
     int i, num_devices = 0;
     snd_device_t new_snd_devices[SND_DEVICE_OUT_END];
     char device_name[DEVICE_NAME_MAX_SIZE] = {0};
-
+    
     if (snd_device < SND_DEVICE_MIN ||
         snd_device >= SND_DEVICE_MAX) {
         ALOGE("%s: Invalid sound device %d", __func__, snd_device);
@@ -3008,6 +3087,11 @@ int select_devices(struct audio_device *adev, audio_usecase_t uc_id)
             usecase->stream.out->app_type_cfg.sample_rate = DEFAULT_OUTPUT_SAMPLING_RATE;
         }
     }
+
+#ifdef LGE_ESS_DAC
+    check_and_enable_ess_hifi(adev, usecase, out_snd_device);
+#endif
+
     enable_audio_route(adev, usecase);
 
     if (uc_id == USECASE_AUDIO_PLAYBACK_VOIP) {
