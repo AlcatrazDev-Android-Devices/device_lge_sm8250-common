@@ -7,6 +7,7 @@ import /init.lge.log.rc
 import /init.lge.svelte.rc
 
 on init
+    restorecon_recursive /sys/kernel/es9218_dac
 
 # LG override start - device/qcom/kona/init.target.rc
 on fs
