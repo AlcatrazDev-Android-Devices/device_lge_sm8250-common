@@ -151,7 +151,7 @@ PRODUCT_PACKAGES += \
 # DAC
 PRODUCT_PACKAGES += \
     QuadDACPanel \
-    vendor.lge.hardware.audio.dac.control@1.0-service
+    vendor.lge.hardware.audio.dac.control@2.0-service.proprietary
 
 # Dexpreopt
 PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
