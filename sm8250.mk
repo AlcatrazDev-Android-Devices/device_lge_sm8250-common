@@ -45,6 +45,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# AISound
+PRODUCT_PACKAGES += \
+    LGEAISound
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService-Soong \
