@@ -1005,8 +1005,7 @@ else
 
         # Enable adaptive LMK for all targets &
         # use Google default LMK series for all 64-bit targets >=2GB.
-        # LGE: don't use adaptive LMK
-        # echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+        echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
 
         # Enable oom_reaper
         if [ -f /sys/module/lowmemorykiller/parameters/oom_reaper ]; then
@@ -1033,7 +1032,7 @@ else
                 #Set PPR parameters for all other targets.
                 echo $set_almk_ppr_adj > /sys/module/process_reclaim/parameters/min_score_adj
                 # LGE: don't use process reclaim
-                # echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
+                #echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
                 echo 50 > /sys/module/process_reclaim/parameters/pressure_min
                 echo 70 > /sys/module/process_reclaim/parameters/pressure_max
                 echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
@@ -1060,10 +1059,10 @@ else
 
     # Disable wsf for all targets beacause we are using efk.
     # wsf Range : 1..1000 So set to bare minimum value 1.
-    # LGE: set in init.lge.zramswap.sh
+    # LGE: disable wmark scale factor, use /device/lge/common/svelte/svelte.mk
     #echo 1 > /proc/sys/vm/watermark_scale_factor
 
-    # LGE: disable zram config, use device/lge/common/svelte/svelte.mk
+    # LGE: disable zram config, use /device/lge/common/svelte/svelte.mk
     #configure_zram_parameters
 
     configure_read_ahead_kb_values
@@ -1103,6 +1102,36 @@ case "$target" in
         echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
         echo 90 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
         ;;
+esac
+
+# For Kodiak target for which cdsp is defective, we read remote cdsp status from fastrpc node
+# and if its value is false we disable cdsp daemon by setting the cdsp disable propety to true
+case "$target" in
+	"lahaina")
+		if [ -f /sys/devices/soc0/chip_family ]; then
+			chip_family_id=`cat /sys/devices/soc0/chip_family`
+		else
+			chip_family_id=-1
+		fi
+
+		echo "adsprpc : chip_family_id : $chip_faily_id" > /dev/kmsg
+
+		case "$chip_family_id" in
+			"0x76")
+			if [ -f /sys/devices/platform/soc/soc:qcom,msm_fastrpc/remote_cdsp_status ]; then
+				remote_cdsp_status=`cat /sys/devices/platform/soc/soc:qcom,msm_fastrpc/remote_cdsp_status`
+			else
+				remote_cdsp_status=-1
+			fi
+
+			echo "adsprpc : remote_cdsp_status : $remote_cdsp_status" > /dev/kmsg
+
+			if [ $remote_cdsp_status -eq 0 ]; then
+				setprop vendor.fastrpc.disable.cdsprpcd.daemon 1
+				echo "adsprpc : Disabled cdsp daemon" > /dev/kmsg
+			fi
+		 esac
+		  ;;
 esac
 
 case "$target" in
@@ -3637,12 +3666,8 @@ case "$target" in
       echo -6 >  /sys/devices/system/cpu/cpu7/sched_load_boost
       echo 85 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load
 
-      # LGE CHANGE for input boost
-      #echo "0:1209600" > /sys/module/cpu_boost/parameters/input_boost_freq
-      #echo 40 > /sys/module/cpu_boost/parameters/input_boost_ms
-      echo "0:1708800 6:1516800" > /sys/module/cpu_boost/parameters/input_boost_freq
-      echo "0:1708800 6:1363200" > /sys/module/cpu_boost/parameters/sub_boost_freq
-      echo 80 > /sys/module/cpu_boost/parameters/input_boost_ms
+      echo "0:1209600" > /sys/module/cpu_boost/parameters/input_boost_freq
+      echo 40 > /sys/module/cpu_boost/parameters/input_boost_ms
 
       # Set Memory parameters
       configure_memory_parameters
@@ -3893,15 +3918,21 @@ case "$target" in
         # Enable conservative pl
         echo 1 > /proc/sys/kernel/sched_conservative_pl
 
-        echo "0:1228800" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
-        echo 120 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
+        echo "0:1804800 6:1152000 7:1094400" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
+        echo "0:1804800 6:1152000 7:1094400" > /sys/devices/system/cpu/cpu_boost/sub_boost_freq
+        echo 80 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
 
         # Set Memory parameters
         configure_memory_parameters
 
-        if [ `cat /sys/devices/soc0/revision` == "2.0" ]; then
+        # LGE: lito need swappiness to 150
+        echo 150 > /proc/sys/vm/swappiness
+
+        rev=`cat /sys/devices/soc0/revision`
+        if [ $rev == "2.0" ] || [ $rev == "2.0.2" ]; then
              # r2.0 related changes
-             echo "0:1075200" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
+             # LGE : use lge input boost frequency
+             #echo "0:1075200" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
              echo 610000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/rtg_boost_freq
              echo 1075200 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
              echo 1152000 > /sys/devices/system/cpu/cpufreq/policy6/schedutil/hispeed_freq
@@ -4264,7 +4295,7 @@ case "$target" in
 
         #power/perf tunings for khaje
         case "$soc_id" in
-                 "518" )
+                 "518" | "561")
 
             # Core control parameters on big
             echo 0 > /sys/devices/system/cpu/cpu0/core_ctl/enable
@@ -4355,6 +4386,10 @@ case "$target" in
             # Turn off scheduler boost at the end
             echo 0 > /proc/sys/kernel/sched_boost
 
+	    echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-gdhs/idle_enabled
+	    echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/idle_enabled
+	    echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-gdhs/suspend_enabled
+            echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/suspend_enabled
             # Turn on sleep modes
             echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
@@ -4478,6 +4513,9 @@ case "$target" in
     echo -6 >  /sys/devices/system/cpu/cpu6/sched_load_boost
     echo -6 >  /sys/devices/system/cpu/cpu7/sched_load_boost
     echo 85 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load
+
+    # Enable conservative pl
+    echo 1 > /proc/sys/kernel/sched_conservative_pl
 
     echo "0:1248000" > /sys/module/cpu_boost/parameters/input_boost_freq
     echo 40 > /sys/module/cpu_boost/parameters/input_boost_ms
@@ -5234,7 +5272,7 @@ case "$target" in
     "msmnile")
 	# cpuset parameters
 	target_varient=`getprop ro.build.product`
-        if [ "$target_varient" == "msmnile_gvmq" ]; then
+        if [ "$target_varient" == "msmnile_gvmq" ] || [ "$target_varient" == "msmnile_gvmgh" ]; then
 		echo 4-7 > /dev/cpuset/background/cpus
 		echo 4-7 > /dev/cpuset/system-background/cpus
 
@@ -5286,18 +5324,11 @@ case "$target" in
 		echo 85 85 > /proc/sys/kernel/sched_downmigrate
 		echo 100 > /proc/sys/kernel/sched_group_upmigrate
 		echo 10 > /proc/sys/kernel/sched_group_downmigrate
-		echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 
-                # cpuset parameters
-                echo 0-1     > /dev/cpuset/background/cpus
-                echo 0-3     > /dev/cpuset/system-background/cpus
-                echo 0-2,4-6 > /dev/cpuset/foreground/cpus
-                echo 0-7     > /dev/cpuset/top-app/cpus
-                echo 0-3     > /dev/cpuset/restricted/cpus
-                echo 0-7     > /dev/cpuset/camera-daemon/cpus
+		echo 0-3 > /dev/cpuset/background/cpus
+		echo 0-3 > /dev/cpuset/system-background/cpus
 
-		# Turn off scheduler boost at the end
-		echo 0 > /proc/sys/kernel/sched_boost
+
 
 		# configure governor settings for silver cluster
 		echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
@@ -5321,18 +5352,13 @@ case "$target" in
 		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/hispeed_freq
 		echo 1 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/pl
 
-		# LGE CHANGE for input boost
 		# configure input boost settings
-		#echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
-		#echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
-		echo "0:1785600 4:1056000 7:1056000" > /sys/module/cpu_boost/parameters/input_boost_freq
-		echo "0:1785600 4:940800 7:940800" > /sys/module/cpu_boost/parameters/sub_boost_freq
-		echo 80 > /sys/module/cpu_boost/parameters/input_boost_ms
+		echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
+		echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
 
 		# Disable wsf, beacause we are using efk.
 		# wsf Range : 1..1000 So set to bare minimum value 1.
-		# LGE: set in init.lge.zramswap.sh
-		# echo 1 > /proc/sys/vm/watermark_scale_factor
+	        echo 1 > /proc/sys/vm/watermark_scale_factor
 
         	# Enable oom_reaper
 		if [ -f /sys/module/lowmemorykiller/parameters/oom_reaper ]; then
@@ -5391,8 +5417,12 @@ case "$target" in
 				echo 0 > $npubw/bw_hwmon/idle_mbps
 		                echo 40 > $npubw/polling_interval
 				echo 0 > /sys/devices/virtual/npu/msm_npu/pwr
-	    done
-	done
+	                      done
+	           done
+	fi
+	# Turn off scheduler boost at the end
+	echo 0 > /proc/sys/kernel/sched_boost
+	echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 
 	# memlat specific settings are moved to seperate file under
 	# device/target specific folder
@@ -5413,7 +5443,7 @@ case "$target" in
 	            # Start Host based Touch processing
 		case "$platform_subtype_id" in
 			"0" | "1" | "2" | "3" | "4")
-			#start_hbtp
+			start_hbtp
 			;;
 		esac
 		;;
@@ -5440,7 +5470,6 @@ case "$target" in
 			configure_automotive_sku_parameters
 		   fi
 		fi
-	fi
     ;;
 esac
 
@@ -5740,8 +5769,10 @@ case "$target" in
 	echo 1 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/pl
 
 	# configure input boost settings
-	echo "0:1324800" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
-	echo 120 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
+	echo "0:1785600 4:1056000 7:1056000" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
+	echo "0:1785600 4:940800 7:940800" > /sys/devices/system/cpu/cpu_boost/sub_boost_freq
+	echo 80 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
+
 
 	# configure governor settings for gold cluster
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor

@@ -6,7 +6,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter alphaplus betalm mh2lm flashlm flashlmdd,$(TARGET_DEVICE)),)
+ifneq ($(filter timelm,$(TARGET_DEVICE)),)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
@@ -242,7 +242,7 @@ $(WIDEVINE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 ALL_DEFAULT_INSTALLED_MODULES += $(WIDEVINE_SYMLINKS)
 
 BDWLAN_IMAGES := \
-    bdwlan.bin bdwlan_ch0.bin bdwlan_ch1.bin
+    bdwlan.elf bdwlan_ch0.elf bdwlan_ch1.elf
 
 BDWLAN_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/,$(notdir $(BDWLAN_IMAGES)))
 $(BDWLAN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
