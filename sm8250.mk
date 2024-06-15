@@ -11,8 +11,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+PRODUCT_PACKAGES += \
+    CarrierConfigCommonOverlay \
+    FrameworksCommonOverlay \
+    SettingsCommonOverlay \
+    SettingsProviderCommonOverlay \
+    SystemUICommonOverlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
@@ -554,7 +558,7 @@ PRODUCT_PACKAGES += \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
     libwpa_client \
-    WifiOverlay \
+    WifiCommonOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
 
