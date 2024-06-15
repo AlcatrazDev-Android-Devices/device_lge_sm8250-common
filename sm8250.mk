@@ -210,6 +210,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.lge_sm8250
 
+# Floss IMS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions_me.phh.ims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions_me.phh.ims.xml \
+    $(LOCAL_PATH)/configs/config-me.phh.ims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/config-me.phh.ims.xml
+
 # FM packages
 PRODUCT_PACKAGES += \
 	FM2 \
