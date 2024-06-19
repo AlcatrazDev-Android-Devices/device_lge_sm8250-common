@@ -427,6 +427,7 @@ PRODUCT_PACKAGES += \
     init.qti.fm.sh
 
 PRODUCT_PACKAGES += \
+    fstab.zram \
     init.lge.audio.rc \
     init.lge.display.rc \
     init.lge.fingerprints.rc \
