@@ -576,5 +576,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
+# WiFi firmware symlinks
+PRODUCT_PACKAGES += \
+    firmware_WCNSS_qcom_cfg.ini_symlink \
+    firmware_wlan_mac.bin_symlink
+
 # Inherit the proprietary files
 $(call inherit-product, vendor/lge/sm8250-common/sm8250-common-vendor.mk)
