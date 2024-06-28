@@ -97,7 +97,7 @@ void init_target_properties()
         }
     }
 
-    cust_prop_path = "/product/OP/cust.prop";
+    cust_prop_path = "/vendor/OP/cust.prop";
     std::ifstream cust_prop_stream(cust_prop_path, std::ifstream::in);
 
     while(std::getline(cust_prop_stream, cust_prop_line)) {
