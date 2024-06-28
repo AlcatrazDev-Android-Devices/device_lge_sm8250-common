@@ -42,6 +42,8 @@ public class AISoundSettingsFragment extends PreferenceFragment implements
     private MainSwitchPreference mSwitchBar;
     private ListPreference mProfilePref;
 
+    private AISoundUtils mAISoundUtils;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.aisound_settings);
@@ -54,6 +56,8 @@ public class AISoundSettingsFragment extends PreferenceFragment implements
         mProfilePref = (ListPreference) findPreference(PREF_PROFILE);
         mProfilePref.setOnPreferenceChangeListener(this);
         mProfilePref.setEnabled(enable);
+
+        mAISoundUtils = AISoundUtils.getInstance(getActivity());
     }
 
     @Override
@@ -72,5 +76,6 @@ public class AISoundSettingsFragment extends PreferenceFragment implements
         mSwitchBar.setChecked(isChecked);
         mProfilePref.setEnabled(isChecked);
         AISound.switchAISound(getContext(), isChecked);
+        mAISoundUtils.setAISoundOn(isChecked);
     }
 }
