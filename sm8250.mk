@@ -146,7 +146,8 @@ PRODUCT_PACKAGES += \
     libcamera2ndk_vendor \
     libdng_sdk.vendor \
     libgui_vendor \
-    libpng.vendor
+    libpng.vendor \
+    libunwindstack.vendor
 
 # Control groups and task profiles
 PRODUCT_COPY_FILES += \
