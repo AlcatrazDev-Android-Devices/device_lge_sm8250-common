@@ -91,7 +91,7 @@ BOARD_HAS_QCA_FM_SOC := hastings
 BOARD_HAVE_QCOM_FM := true
 
 # HIDL
-DEVICE_MATRIX_FILE += $(COMMON_PATH)/compatibility_matrix.xml
+DEVICE_MATRIX_FILE += hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
 
 # Init
