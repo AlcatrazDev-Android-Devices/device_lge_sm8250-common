@@ -7,6 +7,7 @@
 /dev/block/platform/soc/1d84000\.ufshc/by-name/drm                       u:object_r:drm_block_device:s0
 /dev/block/platform/soc/1d84000\.ufshc/by-name/p_persist_lg              u:object_r:persist_lg_block_device:s0
 /dev/block/platform/soc/1d84000\.ufshc/by-name/els                       u:object_r:els_block_device:s0
+/dev/block/platform/soc/1d84000\.ufshc/by-name/felica                    u:object_r:felica_block_device:s0
 /dev/block/platform/soc/1d84000\.ufshc/by-name/ftm                       u:object_r:vendor_efs_boot_dev:s0
 /dev/block/platform/soc/1d84000\.ufshc/by-name/mpt                       u:object_r:mpt_block_device:s0
 /dev/block/platform/soc/1d84000\.ufshc/by-name/srtc                      u:object_r:srtc_block_device:s0
