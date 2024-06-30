@@ -13,3 +13,4 @@ type srtc_block_device, dev_type;
 type operatorlogging_block_device, dev_type;
 type eri_block_device, dev_type;
 type carrier_block_device, dev_type;
+type felica_block_device, dev_type;

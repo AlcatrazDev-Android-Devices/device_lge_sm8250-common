@@ -703,7 +703,27 @@ vendor/bin/hw/android.hardware.nfc@1.2-service-cxd22xx
 vendor/etc/init/android.hardware.nfc@1.2-service-cxd22xx.rc
 vendor/etc/libnfc-cxd-RF.conf
 vendor/etc/libnfc-cxd22xx.conf
+vendor/etc/nfc/PublicKey.txt
+vendor/etc/nfc/config.xml
+vendor/etc/nfc/config_AU.xml
+vendor/etc/nfc/config_CA.xml
+vendor/etc/nfc/config_CO.xml
+vendor/etc/nfc/config_COM.xml
+vendor/etc/nfc/config_HK.xml
+vendor/etc/nfc/config_IL.xml
+vendor/etc/nfc/config_JP.xml
+vendor/etc/nfc/config_KR.xml
+vendor/etc/nfc/config_LDU.xml
+vendor/etc/nfc/config_NZ.xml
+vendor/etc/nfc/config_PL.xml
+vendor/etc/nfc/config_US.xml
 vendor/firmware/cxd225x_firmware.bin
+
+# NFC - JP variant felica config
+product/etc/felica/common.cfg
+product/etc/felica/mfm.cfg
+product/etc/felica/mfs.cfg
+vendor/etc/felica/config_felica.xml
 
 # OMX
 vendor/lib/libAlacSwDec.so
