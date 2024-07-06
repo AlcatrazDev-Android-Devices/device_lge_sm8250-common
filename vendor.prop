@@ -242,7 +242,7 @@ ro.soc.model=SM8250
 ro.apk_verity.mode=2
 
 # Voice
-vendor.voice.path.for.pcm.voip=true
+vendor.voice.path.for.pcm.voip=false
 
 # Volume
 ro.config.vc_call_vol_steps=7
