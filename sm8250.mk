@@ -455,9 +455,6 @@ PRODUCT_PACKAGES += \
 # Rootdir
 PRODUCT_PACKAGES += \
     init.class_main.sh \
-    init.lge.usb.default.sh \
-    init.lge.usb.lao.sh \
-    init.lge.usb.sh \
     init.mdm.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
@@ -474,8 +471,6 @@ PRODUCT_PACKAGES += \
     init.lge.fingerprints.rc \
     init.lge.power.rc \
     init.lge.sensors.rc \
-    init.lge.usb.configfs.rc \
-    init.lge.usb.rc \
     init.lge.vendor.on_boot.rc \
     init.lge.vendor.on_post_fs_data.rc \
     init.lge.vendor.on_post_fs.rc \
